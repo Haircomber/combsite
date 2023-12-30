@@ -1,0 +1,478 @@
+/* Colors */
+:root {
+    --primary-background: #f71ba2;
+    --secondary-background: #d80073;
+    --text-color: white;
+    
+}
+
+.gold-text {
+    color: #d4af37; /* A standard gold color */
+    text-shadow: 1px 1px 2px #5c5c5c; /* Subtle shadow for depth */
+    background-image: linear-gradient(180deg, #c9a028 0%, #f2d264 100%);
+    -webkit-background-clip: text;
+    background-clip: text; /* Standard property for broader compatibility */
+    color: transparent; /* Makes the gradient visible as text color */
+    display: inline; /* Allows the gradient to be just the size of the text */
+  }
+
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--secondary-background); /* Set the background color for the entire page */
+    margin: 0; /* Optional: Remove default margin */
+    padding: 0; /* Optional: Remove default padding */
+    color: white; /* Set a default text color for the entire page (if desired) */
+
+}
+
+/* Header Styles */
+.header {
+    background-color: var(--primary-background);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--secondary-background);
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.header .logo-and-resources {
+    display: flex; /* Align logo and resources side by side */
+    align-items: center; /* Vertically align the items */
+    gap: 20px; /* Adjust the space between the logo and the resources link */
+}
+
+.logo-and-resources,
+.nav-links-right {
+    flex: 1; /* Assign a flex value to make sure they can grow equally */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Center the contents of these containers */
+}
+
+.nav-links-center {
+    flex: 2; /* Give the center links double the space to ensure they stay in the center */
+    display: flex;
+    justify-content: center;
+    /* Remove any margin or padding that might offset the centering */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links-center .logo {
+    max-width: 50px; /* Adjust the size as necessary */
+    height: auto;
+    padding: 0 10px; /* Add padding to give some space around the logo */
+}
+
+/* Optional: If you want to vertically center the items in the navbar */
+.nav-links-center ul {
+    display: flex;
+    align-items: center; /* This ensures vertical alignment */
+    justify-content: center; /* This keeps items horizontally centered */
+}
+
+.nav-links-right {
+    justify-content: flex-end; /* Align .nav-links-right to the right */
+}
+
+.header .logo img {
+    max-width: 50px;
+    height: auto;
+}
+
+.nav-links-left,
+.nav-links-center,
+.nav-links-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links-left ul,
+.nav-links-center ul,
+.nav-links-right ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.nav-links-center {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-links-right {
+    margin: 0; /* Reset margin to allow flexbox to handle spacing */
+}
+
+.nav-links, .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px; /* Clickable area padding */
+    list-style: none;
+    transition: text-shadow 0.3s ease; /* Smooth transition for text-shadow */
+}
+
+/* Stronger text shadow on hover */
+.nav-links a:hover {
+    text-shadow: 0px 0px 10px #d80073, /* Strong dark pink glow */
+                 0px 0px 20px #d80073; /* Layering multiple shadows for intensity */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Initially hide the dropdown content */
+    position: absolute;
+    background-color: #f71ba2; /* Pink background */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 3px solid white; /* White border */
+    border-radius: 8px; /* Example border radius */
+    overflow: hidden; /* Ensures the content does not spill outside the border radius */
+}
+
+.dropdown-content a {
+    color: white; /* White text for dropdown items */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover { background-color: #d80073; } /* Slightly darker pink for hover effect */
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown content on hover */
+}
+
+/* Ensure the main dropdown link matches the color scheme */
+.nav-links a, .nav-links a:hover {
+    color: white; /* White text for the main link */
+    background-color: #f71ba2; /* Pink background */
+}
+
+.dropdown-content li {
+    padding: 1px 0; /* This adds vertical padding to each dropdown item */
+}
+
+/* Style for the dropdown arrow */
+.dropdown-arrow {
+    display: inline-block;
+    margin-left: 5px; /* Adjust space between text and arrow */
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+/* Rotate arrow on hover */
+.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+
+
+.main-title {
+    text-align: center; /* Centers the text horizontally */
+    font-size: 60px; /* Large font size for main title */
+    font-weight: 900; /* Bold font weight */
+    color: #FFFFFF; /* White color for the text */
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+
+    padding-top: 30px; /* Increases padding at the top */
+    padding-bottom: 30px; /* Padding at the bottom */
+    letter-spacing: 2px; /* Optional: Increases spacing between letters */
+    position: relative; /* Needed for z-index to take effect */
+}
+
+/* Banner Styles */
+.banner {
+    background-color: var(--secondary-background);
+    text-align: center; /* Center align the content */
+    padding: 20px;
+}
+
+.banner .banner-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    text-align: center; /* Center align the content */
+    padding: 0 30px; /* Adds 10px padding to the left and right */
+    margin: 0 auto; /* Centers the text block within the banner */
+    max-width: calc(100% - 60px);
+}
+
+.ascii-banner{
+    display:flex;
+    justify-content:center;
+}
+
+
+.ascii-banner pre {
+    font-family: "Courier New", Courier, monospace; /* Monospaced font for ASCII art */
+    color: #FFFFFF; /* Keeps the ASCII art white */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Black shadow for depth */
+    font-weight: bold; /* Only if it doesn't distort your ASCII art */
+    padding: 10px; /* Adds some padding around the text */
+    border-radius: 5px; /* Optional: Rounds the corners if you like */
+    display: inline-block; /* Wraps the background tightly around the text */
+}
+
+/* Banner feature Titles Styles */
+.feature-titles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    position: absolute;
+    font-size: 30px;
+    font-weight: 900; /* Makes the font bolder */
+    color: #ffff; /* Keeps the text white */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
+    background: rgba(255, 255, 255, 0.2);  /* Optional: Adds a semi-transparent background */
+    border-radius: 20px; /* Optional: Rounds the corners of the background box */
+    padding: 10px; /* Adds space inside the background box */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.title:hover {
+    background: rgba(255, 255, 255, 0.2); /* Lightens the background on hover */
+    color: var(--primary-background); /* Changes text color on hover - choose a color that matches your branding */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+}
+
+#title-1 { top: 275px; left: 350px; } /* Position for 'Privacy' */
+#title-2 { top: 400px; left: 350px; } /* Position for 'Post-Quantum Security' */
+#title-3 { top: 520px; left: 350px; } /* Position for 'Mining Incentives' */
+#title-4 { top: 340px; right: 300px; } /* Position for '3rd Party Services' */
+#title-5 { top: 455px; right: 410px; } /* Position for 'Scalability' */
+#title-6 { top: 580px; right: 110px; } /* Position for 'Bitcoin Blockchain' */
+
+
+/* Features Section Styles */
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    align-items: center; /* Centering features */
+}
+
+.feature-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Centering feature rows */
+    flex-wrap: wrap; /* Wrap items to the next line if not enough space */
+}
+
+.feature {
+    background-color: var(--primary-background);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    justify-content: flex-start; /* Align content to the start */
+    gap: 10px; /* Space between content */
+    min-width: 250px; /* Minimum width of the feature box */
+    max-width: 800px; /* Maximum width of the feature box */
+    min-height: 250px; /* Minimum height of the feature box */
+    max-height: 250px; /* Maximum height of the feature box */
+    box-sizing: border-box; /* Include padding and border in box size */
+    overflow: hidden; /* Hide overflow */
+    margin-bottom: 5px; /* Spacing between feature blocks */
+}
+
+.feature img {
+    width: 100%; /* Make the image responsive */
+    max-width: 150px; /* Maximum width for the image */
+    height: auto; /* Maintain aspect ratio */
+    align-self: center; /* Center the image in the feature box */
+}
+
+.feature-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    width: 100%; /* Make the title take full width */
+    text-align: center;
+    margin-bottom: 10px; /* Space between the title and content */
+}
+
+.feature p {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin: 0; /* Reset margin */
+    flex-grow: 1; /* Allow the paragraph to fill the remaining space */
+    overflow-y: auto; /* Enable scrolling for overflow content */
+}
+
+/* Ensure that the flex items do not grow beyond their containers */
+.feature-content {
+    display: flex;
+    flex-direction: row; /* Arrange the image and text side by side */
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Ensure the flex container takes the full width */
+}
+
+.chart-container {
+    background-color: var(--primary-background); /* Light pink background */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Shadow effect */
+    border-radius: 4px; /* Rounded corners */
+    margin: 50px auto;
+    padding: 20px; /* Padding inside the container */
+    width: calc(100% - 40px); /* Adjust width to account for padding */
+    max-width: 1050px; /* Adjusted max width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    transition: padding 0.3s ease, margin 0.3s ease; /* Smooth transition for padding and margin */
+}
+
+
+#myChart {
+    /* Remove absolute positioning and left property */
+    width: 100%; /* Chart takes full width of its parent container */
+    height: auto; /* Height is auto to maintain aspect ratio */
+}
+
+.data-above-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spacing between data and chart */
+    padding-top:40px
+}
+
+.data-above-chart > div {
+    flex: 1; /* Each child takes equal space */
+    text-align: center; /* Center the text within each child */
+}
+
+.mempool-transactions-box {
+    border: 2px solid white;
+    padding: 10px;
+    padding-bottom: 0px;
+    height: calc(8 * 1.5em); /* Assuming 1.5em is roughly the line height of a list item */
+    overflow-y: auto; /* Enable scrolling if there are more than 8 entries */
+}
+
+.mempool-transactions-box ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+.top-fee, .comb-price {
+    /* Adjust these styles to achieve the desired font sizes and layout */
+    font-size: 1em; /* Replace with the font size you want for the title "Top Fee" or "Comb Price" */
+    color: white;
+    text-align: center;
+}
+
+.top-fee span, .comb-price span {
+    /* Adjust these styles to achieve the desired font sizes for the values */
+    display: block; /* This will put the value on a new line */
+    font-size: 1.5em; /* Replace with the font size you want for the value */
+    color: white;
+}
+
+.p2wsh-address {
+    font-size: 0.8em; /* Smaller font size for the P2WSH address */
+    color: #FFFFFF; /* You can change this as per your color scheme */
+    /* Additional styling as required */
+}
+
+.mempool-transactions-box li {
+    border-bottom: 1px solid white; /* Add a separator between entries */
+    padding: 5px 0; /* Add some padding to each list item */
+}
+
+/* Remove the last list item's border */
+.mempool-transactions-box li:last-child {
+    border-bottom: none;
+}
+
+#transactionList {
+    height: 100%; /* Make sure the list takes up the entire height of its container */
+}
+
+
+.footer {
+    background-color: var(--primary-background);
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    border-top: 1px solid var(--secondary-background);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.footer-content a {
+    color: white; /* Icon color */
+    margin: 0 40px; /* Spacing between icons */
+    font-size: 40px; /* Icon size */
+    transition: color 0.3s ease; /* Transition for hover effect */
+}
+
+.footer-content a:hover {
+    color: #d80073; /* Color change on hover */
+}
+
+@media (max-width: 768px) {
+    .feature-content {
+        flex-direction: column; /* Stack image and text on small screens */
+    }
+
+    .feature img {
+        max-width: 100%; /* Ensure the image is responsive within the feature box */
+        margin-bottom: 10px; /* Space between the image and paragraph */
+    }
+
+    .feature p {
+        text-align: center; /* Center text on small screens */
+    }
+
+    .feature {
+        max-width: none; /* Remove max width on smaller screens */
+        width: auto; /* Allow the feature boxes to adjust to content size */
+    }
+
+    .data-above-chart {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+  

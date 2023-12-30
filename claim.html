@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Claim Haircomb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your styles.css file -->
+</head>
+<body>
+    <div class="header"></div>
+
+    <div class="chart-container">
+        <div class="data-above-chart">
+            <!-- Updated structure for Comb Price -->
+            <div class="comb-price">
+                <div>Comb Price:</div>
+                <span id="combPriceDollars">$6.45</span>
+            </div>
+            <!-- Updated structure for Top Fee -->
+            <div class="top-fee">
+                <div>Top Fee:</div>
+                <span id="topFeeMBTC">0.256 mBTC</span>
+                <div class="p2wsh-address" style="font-size: 0.8em;">3QREthnL5Lt12345ab67cd890e12f345gh67
+                </div>
+            </div>
+            <div class="mempool-transactions-box">
+                <ul id="transactionList">
+                    <!-- Updated list items for mem pool transactions with mock data -->
+                    <li>3N8auHdN9rt... - 0.00045</li>
+                    <li>3M9qvHKtgAR... - 0.00030</li>
+                    <li>3MBbqf3Asfa... - 0.00030</li>
+                    <li>3N5hJ5jE8na... - 0.00030</li>
+                    <li>3P3R5n8xnjq... - 0.00030</li>
+                    <li>3QREthnL5Lt... - 0.00060</li>
+                    <!-- ... more list items ... -->
+                </ul>
+            </div>
+        </div>
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    
+</div>
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+
+<script>
+    // Initialize the chart with dynamic sizing and specific data intervals
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'scatter', // Use scatter for the dot chart
+        data: {
+            datasets: [{
+                label: 'Top Fee',
+                backgroundColor: '#d80073', // Darker pink for dots
+                borderColor: '#d80073', // Border color for the dots
+                data: [],
+                showLine: false, // No line connecting the dots
+                pointRadius: 10, // Increase the radius of the points (4 times larger than default)
+                pointHoverRadius: 12, // Optional: Increase the radius when hovering over the points
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: 1000,
+                    ticks: {
+                        color: 'white', // Makes y-axis tick labels white
+                        // Increase font size for visibility
+                        font: {
+                            size: 14, // You can adjust the size as needed
+                        },
+                    },
+                    grid: {
+                        color: 'white', // Makes y-axis grid lines white
+                        lineWidth: 3, // Makes y-axis grid lines thicker
+                        drawBorder: true, // Ensure the axis line is drawn
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: 'white', // Makes x-axis tick labels white
+                        // Format x-axis tick labels to display hours
+                        callback: function(value, index, values) {
+                            return moment(value).format('HH:mm'); // Use moment.js to format the time
+                        },
+                        // Increase font size for visibility
+                        font: {
+                            size: 14, // You can adjust the size as needed
+                        },
+                    },
+                    grid: {
+                        color: 'white', // Makes x-axis grid lines white
+                        lineWidth: 3, // Makes x-axis grid lines thicker
+                        drawBorder: true, // Ensure the axis line is drawn
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white', // Makes legend labels white
+                    }
+                }
+            },
+            layout: {
+                padding: { // Padding around the canvas
+                    top: 50, // 50px top padding
+                    right: 100, // 100px right padding
+                    bottom: 50, // 50px bottom padding
+                    left: 100 // 100px left padding
+                }
+            }
+        }
+    });
+    
+    // Example of adding data dynamically
+    var currentTime = Date.now() / 1000; // Get current time in seconds
+    for (let i = 0; i <= 6 * 3600; i += 3600) { // 6 hours of data
+        chart.data.datasets[0].data.push({
+            x: currentTime + i, // Increment by one hour
+            y: Math.floor(Math.random() * 1000) // Random fee amount
+        });
+    }
+    chart.update();
+    </script>
+    
+
+
+<script src="haircomb.js" defer></script>
+<footer></footer>
+</body>
+</html>
