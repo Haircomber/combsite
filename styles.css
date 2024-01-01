@@ -1,20 +1,11 @@
 /* Colors */
 :root {
     --primary-background: #f71ba2;
-    --secondary-background: #d80073;
+    --secondary-background: #c50f7e;
+    --third-background: #e1389f;
     --text-color: white;
     
 }
-
-.gold-text {
-    color: #d4af37; /* A standard gold color */
-    text-shadow: 1px 1px 2px #5c5c5c; /* Subtle shadow for depth */
-    background-image: linear-gradient(180deg, #c9a028 0%, #f2d264 100%);
-    -webkit-background-clip: text;
-    background-clip: text; /* Standard property for broader compatibility */
-    color: transparent; /* Makes the gradient visible as text color */
-    display: inline; /* Allows the gradient to be just the size of the text */
-  }
 
 
 /* General Styles */
@@ -184,16 +175,12 @@ body {
     transform: rotate(180deg);
 }
 
-
-
-
 .main-title {
     text-align: center; /* Centers the text horizontally */
     font-size: 60px; /* Large font size for main title */
     font-weight: 900; /* Bold font weight */
     color: #FFFFFF; /* White color for the text */
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-
     padding-top: 30px; /* Increases padding at the top */
     padding-bottom: 30px; /* Padding at the bottom */
     letter-spacing: 2px; /* Optional: Increases spacing between letters */
@@ -222,7 +209,6 @@ body {
     justify-content:center;
 }
 
-
 .ascii-banner pre {
     font-family: "Courier New", Courier, monospace; /* Monospaced font for ASCII art */
     color: #FFFFFF; /* Keeps the ASCII art white */
@@ -231,7 +217,15 @@ body {
     padding: 10px; /* Adds some padding around the text */
     border-radius: 5px; /* Optional: Rounds the corners if you like */
     display: inline-block; /* Wraps the background tightly around the text */
+    position: relative;
 }
+
+.ascii-banner span.clickable {
+    position: relative;
+    z-index: 2; /* Adjust as needed to bring it to the top of the stacking order */
+    cursor: default; /* Keeps the cursor as the default pointer */
+}
+
 
 /* Banner feature Titles Styles */
 .feature-titles {
@@ -288,7 +282,7 @@ body {
 }
 
 .feature {
-    background-color: var(--primary-background);
+    background-color: var(--third-background);
     padding: 20px;
     border-radius: 10px;
     display: flex;
@@ -340,7 +334,7 @@ body {
 }
 
 .chart-container {
-    background-color: var(--primary-background); /* Light pink background */
+    background-color: var(--third-background); /* Light pink background */
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Shadow effect */
     border-radius: 4px; /* Rounded corners */
     margin: 50px auto;
@@ -361,9 +355,8 @@ body {
 .data-above-chart {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px; /* Spacing between data and chart */
-    padding-top:40px
+    align-items: flex-start;
+    padding-top: 40px;
 }
 
 .data-above-chart > div {
@@ -372,42 +365,58 @@ body {
 }
 
 .mempool-transactions-box {
-    border: 2px solid white;
-    padding: 10px;
-    padding-bottom: 0px;
-    height: calc(8 * 1.5em); /* Assuming 1.5em is roughly the line height of a list item */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    padding: 0; /* No padding here */
+    height: auto; /* Adjusted to content */
     overflow-y: auto; /* Enable scrolling if there are more than 8 entries */
 }
 
+.content-wrapper {
+    border: 2px solid white;
+    padding: 10px; /* Padding around the content */
+}
+
 .mempool-transactions-box ul {
+    padding: 0;
+    margin: 0;
     list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
+    width: fit-content; /* Fits to content width */
+    margin: 0 auto; /* Centers the list */
+}
+
+.mempool-transactions-box li {
+    border-bottom: 1px solid white;
+    padding: 5px 10px; /* Padding inside each list item */
+    margin: 0; /* Remove margin */
 }
 
 .top-fee, .comb-price {
-    /* Adjust these styles to achieve the desired font sizes and layout */
-    font-size: 1em; /* Replace with the font size you want for the title "Top Fee" or "Comb Price" */
-    color: white;
+    text-align: center; /* Center the text within these divs */
+    margin-top: 60px;
+}
+
+.top-fee div, .comb-price div {
+    /* If you have div elements inside .top-fee and .comb-price and want to center their text as well */
     text-align: center;
 }
 
 .top-fee span, .comb-price span {
-    /* Adjust these styles to achieve the desired font sizes for the values */
-    display: block; /* This will put the value on a new line */
-    font-size: 1.5em; /* Replace with the font size you want for the value */
+    display: block; /* Ensures the element is treated as a block, enabling center alignment */
+    margin: 0 auto; /* Automatically centers the block element within its container */
+    font-size: 1.5em;
     color: white;
 }
 
 .p2wsh-address {
+    display: block; /* Treat as a block-level element */
+    text-align: center; /* Center the text */
+    margin: 0 auto; /* Center the block element within its container */
     font-size: 0.8em; /* Smaller font size for the P2WSH address */
     color: #FFFFFF; /* You can change this as per your color scheme */
     /* Additional styling as required */
-}
-
-.mempool-transactions-box li {
-    border-bottom: 1px solid white; /* Add a separator between entries */
-    padding: 5px 0; /* Add some padding to each list item */
 }
 
 /* Remove the last list item's border */
@@ -472,6 +481,33 @@ body {
     .data-above-chart {
         flex-direction: column;
         text-align: center;
+        align-items: center;
+    }
+
+    .top-fee, .comb-price, .mempool-transactions-box {
+        /* Ensure full width for small screens and center content */
+        width: 100%;
+        text-align: center;
+        margin: 10px 0; /* Add some vertical spacing between elements */
+    }
+
+    .mempool-transactions-box .content-wrapper {
+        width: 100%; /* Allow the border to take full width of the box */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        width: fit-content;
+    }
+
+    .mempool-transactions-box ul {
+        width: auto; /* Let the list determine its own width */
+        margin: 0; /* Reset any horizontal margins */
+    }
+
+    .mempool-transactions-box li {
+        /* Center the list items and remove the full-width border */
+        display: block; /* Stack list items */
+        border-bottom: 1px solid white;
+        padding: 5px 0; /* Adjust padding as needed */
+        text-align: center; /* Center the text of list items */
     }
 }
 

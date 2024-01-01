@@ -12,19 +12,22 @@
 
     <div class="chart-container">
         <div class="data-above-chart">
-            <!-- Updated structure for Comb Price -->
-            <div class="comb-price">
-                <div>Comb Price:</div>
-                <span id="combPriceDollars">$6.45</span>
-            </div>
-            <!-- Updated structure for Top Fee -->
-            <div class="top-fee">
-                <div>Top Fee:</div>
-                <span id="topFeeMBTC">0.256 mBTC</span>
-                <div class="p2wsh-address" style="font-size: 0.8em;">3QREthnL5Lt12345ab67cd890e12f345gh67
+        
+                <!-- Top Fee -->
+                <div class="top-fee">
+                    <div>Top Fee:</div>
+                    <span id="topFeeMBTC">0.256 mBTC</span>
+                    <div class="p2wsh-address" style="font-size: 0.8em;">3QREthnL5Lt12345ab67cd890e12f345gh67</div>
                 </div>
-            </div>
+                
+                <!-- Comb Price -->
+                <div class="comb-price">
+                    <div>Comb Price:</div>
+                    <span id="combPriceDollars">$6.45</span>
+                </div>
+            
             <div class="mempool-transactions-box">
+                <div class="content-wrapper">
                 <ul id="transactionList">
                     <!-- Updated list items for mem pool transactions with mock data -->
                     <li>3N8auHdN9rt... - 0.00045</li>
@@ -35,6 +38,7 @@
                     <li>3QREthnL5Lt... - 0.00060</li>
                     <!-- ... more list items ... -->
                 </ul>
+            </div>
             </div>
         </div>
         <canvas id="myChart"></canvas>
@@ -55,8 +59,8 @@
         data: {
             datasets: [{
                 label: 'Top Fee',
-                backgroundColor: '#d80073', // Darker pink for dots
-                borderColor: '#d80073', // Border color for the dots
+                backgroundColor: '#f71ba2', // Darker pink for dots
+                borderColor: 'white', // Border color for the dots
                 data: [],
                 showLine: false, // No line connecting the dots
                 pointRadius: 10, // Increase the radius of the points (4 times larger than default)
