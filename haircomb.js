@@ -66,4 +66,46 @@ document.querySelectorAll('.feature-titles .title').forEach(function(title) {
     });
 });
 
+    // Highlight the active menu item
+    highlightActiveMenuItem();
+};
+
+function highlightActiveMenuItem() {
+    const currentPage = window.location.pathname.split("/").pop(); // Gets the current page filename
+    const menuItems = document.querySelectorAll('.nav-links a');
+
+    menuItems.forEach(item => {
+        if (item.getAttribute('href') === currentPage) {
+            item.classList.add('active-menu-item'); // Add the 'active-menu-item' class to the matching menu item
+        }
+    });
+
+    function addImageToCollage(imgSrc) {
+        const leftCollage = document.querySelector('.image-collage-left');
+        const rightCollage = document.querySelector('.image-collage-right');
+        
+        // Create a new image element
+        const img = new Image();
+        img.src = imgSrc;
+        img.onload = () => {
+            // Compare the total height of images in both collages
+            const leftHeight = getTotalHeightOfImages(leftCollage);
+            const rightHeight = getTotalHeightOfImages(rightCollage);
+    
+            // Append the new image to the shorter collage
+            if (leftHeight <= rightHeight) {
+                leftCollage.appendChild(img);
+            } else {
+                rightCollage.appendChild(img);
+            }
+        };
+    }
+    
+    function getTotalHeightOfImages(collage) {
+        return Array.from(collage.getElementsByTagName('img')).reduce((total, img) => total + img.offsetHeight, 0);
+    }
+    
+    // Example usage: addImageToCollage('path_to_your_image.jpg');
+    
 }
+

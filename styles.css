@@ -125,13 +125,14 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
+    cursor: default;
 }
 
 .dropdown-content {
     display: none; /* Initially hide the dropdown content */
     position: absolute;
     background-color: #f71ba2; /* Pink background */
-    min-width: 160px;
+    min-width: 230px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border: 3px solid white; /* White border */
@@ -173,6 +174,13 @@ body {
 /* Rotate arrow on hover */
 .dropdown:hover .dropdown-arrow {
     transform: rotate(180deg);
+}
+
+.active-menu-item {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bolder text */
+    color: #fff; /* Change color if needed */
+    text-shadow: 0px 0px 10px #d80073, 0px 0px 20px #d80073; /* Optional: Add a glow effect */
 }
 
 .main-title {
@@ -426,6 +434,51 @@ body {
 
 #transactionList {
     height: 100%; /* Make sure the list takes up the entire height of its container */
+}
+
+/* pinkpill collage */
+.image-collage-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.image-collage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-collage-left {
+    margin-right: auto; /* Pushes the collage to the left */
+}
+
+.image-collage-right {
+    margin-left: auto; /* Pushes the collage to the right */
+}
+
+/* Add styles for images inside the collages */
+.image-collage img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Space between images */
+}
+
+.pink-pill-container {
+    width: 50%; /* Takes up half the width of the page */
+    margin: 40px auto; /* Centers the box horizontally */
+    padding: 20px; /* Padding inside the box */
+    border: 2px solid white; /* Glowing white border */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* White glow effect */
+    background-color: var(--third-background); /* Background color from your root variables */
+    text-align: center; /* Center the text */
+}
+
+.pink-pill-content {
+    color: white; /* Text color */
+    line-height: 1.6; /* Adjust line spacing for better readability */
+    font-size: 24px;
 }
 
 
