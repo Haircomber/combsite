@@ -26,13 +26,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    font-weight: 600;
     position: sticky;
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--secondary-background);
     padding-left: 50px;
     padding-right: 50px;
+    font-size: 20px;
 }
 
 .header .logo-and-resources {
@@ -114,11 +114,16 @@ body {
     list-style: none;
     transition: text-shadow 0.3s ease; /* Smooth transition for text-shadow */
 }
-
 /* Stronger text shadow on hover */
 .nav-links a:hover {
     text-shadow: 0px 0px 10px #d80073, /* Strong dark pink glow */
                  0px 0px 20px #d80073; /* Layering multiple shadows for intensity */
+}
+
+.nav-links-left a, 
+.nav-links-center a, 
+.nav-links-right a {
+    font-weight: 100;
 }
 
 /* Dropdown Styles */
@@ -132,7 +137,7 @@ body {
     display: none; /* Initially hide the dropdown content */
     position: absolute;
     background-color: #f71ba2; /* Pink background */
-    min-width: 230px;
+    min-width: 250px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border: 3px solid white; /* White border */
@@ -177,10 +182,9 @@ body {
 }
 
 .active-menu-item {
-    font-size: 24px; /* Larger font size */
-    font-weight: bold; /* Bolder text */
     color: #fff; /* Change color if needed */
     text-shadow: 0px 0px 10px #d80073, 0px 0px 20px #d80073; /* Optional: Add a glow effect */
+    font-style: italic;
 }
 
 .main-title {
@@ -197,7 +201,8 @@ body {
 
 /* Banner Styles */
 .banner {
-    background-color: var(--secondary-background);
+    background: linear-gradient(to bottom right, #c50f7e, #e1389f);
+
     text-align: center; /* Center align the content */
     padding: 20px;
 }
@@ -439,14 +444,16 @@ body {
 /* pinkpill collage */
 .image-collage-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
 }
 
 .image-collage {
+    flex: 1; /* Allows the image collages to grow as needed */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center images vertically in the collage */
+    max-width: 25%; /* Limit the width of the image collages if necessary */
 }
 
 .image-collage-left {
@@ -457,11 +464,16 @@ body {
     margin-left: auto; /* Pushes the collage to the right */
 }
 
-/* Add styles for images inside the collages */
 .image-collage img {
-    max-width: 100%;
+    width: 100%; /* Adjust size as needed */
+    max-width: 300px; /* Adjust max size as needed */
     height: auto;
-    margin-bottom: 10px; /* Space between images */
+    transition: transform 0.3s ease;
+
+    /* Optional: Add a hover effect */
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 
 .pink-pill-container {
