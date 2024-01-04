@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Initialize dropdown functionality
             initializeDropdown(headerElement);
+
+            highlightActiveMenuItem(); // Call this here after header is loaded
+
+            setTimeout(() => {
+                highlightActiveMenuItem();
+            }, 0);
         });
 
     // Fetch and set footer content
@@ -45,7 +51,7 @@ function initializeDropdown(header) {
             event.target.closest('.dropdown').querySelector('.dropdown-content').style.display = 'none';
         }
     });
-
+}
 // Function to scroll to the feature
 function scrollToFeature(featureId) {
     const featureElement = document.getElementById(featureId);
@@ -63,49 +69,57 @@ document.querySelectorAll('.feature-titles .title').forEach(function(title) {
         // Get the feature ID from the data-target attribute
         const featureId = this.getAttribute('data-target');
         scrollToFeature(featureId);
+
+        // Highlight the active menu item
+    highlightActiveMenuItem();
     });
 });
 
-    // Highlight the active menu item
-    highlightActiveMenuItem();
-};
-
 function highlightActiveMenuItem() {
-    const currentPage = window.location.pathname.split("/").pop(); // Gets the current page filename
+    const currentPage = window.location.pathname.split("/").pop();
+    console.log('Current Page:', currentPage); // Debug log
+
     const menuItems = document.querySelectorAll('.nav-links a');
 
     menuItems.forEach(item => {
-        if (item.getAttribute('href') === currentPage) {
-            item.classList.add('active-menu-item'); // Add the 'active-menu-item' class to the matching menu item
+        // Only proceed if the item has an href attribute
+        if (item.getAttribute('href')) {
+            console.log('Menu Item href:', item.getAttribute('href')); // Debug log
+            if (item.getAttribute('href').endsWith(currentPage)) {
+                console.log('Active Item:', item); // Debug log
+                item.classList.add('active-menu-item');
+            } else {
+                item.classList.remove('active-menu-item');
+            }
         }
     });
-
-    function addImageToCollage(imgSrc) {
-        const leftCollage = document.querySelector('.image-collage-left');
-        const rightCollage = document.querySelector('.image-collage-right');
-        
-        // Create a new image element
-        const img = new Image();
-        img.src = imgSrc;
-        img.onload = () => {
-            // Compare the total height of images in both collages
-            const leftHeight = getTotalHeightOfImages(leftCollage);
-            const rightHeight = getTotalHeightOfImages(rightCollage);
-    
-            // Append the new image to the shorter collage
-            if (leftHeight <= rightHeight) {
-                leftCollage.appendChild(img);
-            } else {
-                rightCollage.appendChild(img);
-            }
-        };
-    }
-    
-    function getTotalHeightOfImages(collage) {
-        return Array.from(collage.getElementsByTagName('img')).reduce((total, img) => total + img.offsetHeight, 0);
-    }
-    
-    // Example usage: addImageToCollage('path_to_your_image.jpg');
-    
 }
+
+function addImageToCollage(imgSrc) {
+    const leftCollage = document.querySelector('.image-collage-left');
+    const rightCollage = document.querySelector('.image-collage-right');
+    
+    // Create a new image element
+    const img = new Image();
+    img.src = imgSrc;
+    img.onload = () => {
+        // Compare the total height of images in both collages
+        const leftHeight = getTotalHeightOfImages(leftCollage);
+        const rightHeight = getTotalHeightOfImages(rightCollage);
+
+        // Append the new image to the shorter collage
+        if (leftHeight <= rightHeight) {
+            leftCollage.appendChild(img);
+        } else {
+            rightCollage.appendChild(img);
+        }
+    };
+}
+
+function getTotalHeightOfImages(collage) {
+    return Array.from(collage.getElementsByTagName('img')).reduce((total, img) => total + img.offsetHeight, 0);
+}
+
+// Example usage: addImageToCollage('path_to_your_image.jpg');
+
 

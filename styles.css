@@ -15,7 +15,6 @@ body {
     margin: 0; /* Optional: Remove default margin */
     padding: 0; /* Optional: Remove default padding */
     color: white; /* Set a default text color for the entire page (if desired) */
-
 }
 
 /* Header Styles */
@@ -32,7 +31,7 @@ body {
     border-bottom: 1px solid var(--secondary-background);
     padding-left: 50px;
     padding-right: 50px;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .header .logo-and-resources {
@@ -107,6 +106,19 @@ body {
     margin: 0; /* Reset margin to allow flexbox to handle spacing */
 }
 
+/* Normal state, button appears raised */
+.nav-links a {
+    border: none; /* No border for a cleaner look */
+    padding: 10px 15px;
+    border-radius: 5px; /* Rounded corners */
+    color: white;
+    text-decoration: none;
+    box-shadow: 1px 4px #e1389f; /* Shadow to give depth */
+    background-image: linear-gradient(to bottom, rgba(225, 56, 159, 0.7), rgba(247, 27, 162, 0.7)); /* Adjusted gradient for better visibility */
+    transition: all 0.2s ease;
+}
+
+
 .nav-links, .nav-links a {
     color: white;
     text-decoration: none;
@@ -159,12 +171,6 @@ body {
     display: block; /* Show dropdown content on hover */
 }
 
-/* Ensure the main dropdown link matches the color scheme */
-.nav-links a, .nav-links a:hover {
-    color: white; /* White text for the main link */
-    background-color: #f71ba2; /* Pink background */
-}
-
 .dropdown-content li {
     padding: 1px 0; /* This adds vertical padding to each dropdown item */
 }
@@ -181,11 +187,15 @@ body {
     transform: rotate(180deg);
 }
 
-.active-menu-item {
-    color: #fff; /* Change color if needed */
-    text-shadow: 0px 0px 10px #d80073, 0px 0px 20px #d80073; /* Optional: Add a glow effect */
-    font-style: italic;
+/* Pressed state for active menu item */
+.nav-links a:not([target="_blank"]).active-menu-item {
+    box-shadow: 1px 2px #e1389f inset; /* Inset shadow for pressed effect */
+    background-image: linear-gradient(to top, rgba(225, 56, 159, 0.7), rgba(247, 27, 162, 0.7)); /* Adjusted gradient for better visibility */
+    transform: translateY(2px); /* Moves the button down */
+    color: white;
+    border: none;
 }
+
 
 .main-title {
     text-align: center; /* Centers the text horizontally */
@@ -223,7 +233,6 @@ body {
 }
 
 .ascii-banner pre {
-    font-family: "Courier New", Courier, monospace; /* Monospaced font for ASCII art */
     color: #FFFFFF; /* Keeps the ASCII art white */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Black shadow for depth */
     font-weight: bold; /* Only if it doesn't distort your ASCII art */
@@ -258,7 +267,7 @@ body {
     font-weight: 900; /* Makes the font bolder */
     color: #ffff; /* Keeps the text white */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
-    background: rgba(255, 255, 255, 0.2);  /* Optional: Adds a semi-transparent background */
+    background: linear-gradient(to bottom, rgba(247, 27, 162, 0.4), rgba(247, 27, 162, 0));
     border-radius: 20px; /* Optional: Rounds the corners of the background box */
     padding: 10px; /* Adds space inside the background box */
     transition: all 0.3s ease; /* Smooth transition for hover effects */
@@ -270,12 +279,12 @@ body {
     cursor: pointer; /* Changes the cursor to indicate it's clickable */
 }
 
-#title-1 { top: 275px; left: 350px; } /* Position for 'Privacy' */
-#title-2 { top: 400px; left: 350px; } /* Position for 'Post-Quantum Security' */
-#title-3 { top: 520px; left: 350px; } /* Position for 'Mining Incentives' */
-#title-4 { top: 340px; right: 300px; } /* Position for '3rd Party Services' */
-#title-5 { top: 455px; right: 410px; } /* Position for 'Scalability' */
-#title-6 { top: 580px; right: 110px; } /* Position for 'Bitcoin Blockchain' */
+#title-1 { top: 225px; left: 350px; } /* Position for 'Privacy' */
+#title-2 { top: 350px; left: 350px; } /* Position for 'Post-Quantum Security' */
+#title-3 { top: 475px; left: 350px; } /* Position for 'Mining Incentives' */
+#title-4 { top: 290px; right: 300px; } /* Position for '3rd Party Services' */
+#title-5 { top: 410px; right: 410px; } /* Position for 'Scalability' */
+#title-6 { top: 540px; right: 110px; } /* Position for 'Bitcoin Blockchain' */
 
 
 /* Features Section Styles */
