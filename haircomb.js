@@ -18,23 +18,41 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 highlightActiveMenuItem();
             }, 0);
-        });
 
-    // Fetch and set footer content
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            const footerElement = document.querySelector('footer');
-            footerElement.innerHTML = data;
-        });
-
-    // Add click event listeners to clickable ASCII art elements
+                // Add click event listeners to clickable ASCII art elements
     var clickableElements = document.querySelectorAll('.ascii-banner span.clickable');
     clickableElements.forEach(element => {
         element.addEventListener('click', function() {
             window.location.href = 'pinkpill.html'; // URL of the secret page
         });
     });
+        
+
+            // Shuffle images in both collages
+            const leftCollageImages = Array.from(document.querySelectorAll('.image-collage-left img'));
+            const rightCollageImages = Array.from(document.querySelectorAll('.image-collage-right img'));
+        
+            shuffleArray(leftCollageImages);
+            shuffleArray(rightCollageImages);
+        
+            const leftCollage = document.querySelector('.image-collage-left');
+            const rightCollage = document.querySelector('.image-collage-right');
+        
+            leftCollage.innerHTML = '';
+            rightCollage.innerHTML = '';
+        
+            leftCollageImages.forEach(img => leftCollage.appendChild(img));
+            rightCollageImages.forEach(img => rightCollage.appendChild(img));
+    });
+
+        // Fetch and set footer content
+        fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            const footerElement = document.querySelector('footer');
+            footerElement.innerHTML = data;
+        });
+
 });
 
 function initializeDropdown(header) {
@@ -122,4 +140,9 @@ function getTotalHeightOfImages(collage) {
 
 // Example usage: addImageToCollage('path_to_your_image.jpg');
 
-
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
