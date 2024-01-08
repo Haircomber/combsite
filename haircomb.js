@@ -26,6 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'pinkpill.html'; // URL of the secret page
         });
     });
+
+    var music = document.getElementById('backgroundMusic');
+    var muteButton = document.getElementById('muteButton');
+    
+    muteButton.addEventListener('click', function() {
+        if(music.paused) {
+            music.play();
+            muteButton.classList.remove('muted');
+        } else {
+            music.pause();
+            muteButton.classList.add('muted');
+        }
+    });
         
 
             // Shuffle images in both collages

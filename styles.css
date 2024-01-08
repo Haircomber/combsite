@@ -19,9 +19,10 @@ body {
 
 /* Header Styles */
 .header {
-    background-color: var(--primary-background);
+    background-image: linear-gradient(to right, #f71ba2, #e1389f, #f71ba2); /* Subtle gradient around #f71ba2 */
     color: white;
     display: flex;
+    padding-top:4px;
     justify-content: space-between;
     align-items: center;
     position: sticky;
@@ -52,7 +53,7 @@ body {
     display: flex;
     justify-content: center;
     /* Remove any margin or padding that might offset the centering */
-    margin: 0;
+    margin-left: -45px;
     padding: 0;
 }
 
@@ -501,9 +502,59 @@ body {
     font-size: 24px;
 }
 
+.audio-control {
+    position: absolute; /* Absolute position relative to the closest positioned ancestor */
+    top: 120px; /* Adjust as needed to place it above the pink-pill-container */
+    right: 50%; /* Adjust as needed based on your layout */
+    transform: translateX(50%); /* Adjust to center the button */
+    z-index: 100; /* High z-index to ensure it's on top */
+}
+
+
+#muteButton {
+    position: absolute; /* Position the button absolutely within .audio-control */
+    top: -50px; /* Adjust this value as needed to position above the pink pill box */
+    left: 50%; /* Start at the horizontal center of .audio-control */
+    transform: translateX(-50%); /* Center the button exactly */
+    z-index: 20; /* Ensure the button is above the .pink-pill-container */
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    border-radius: 50%; /* Make it circular */
+    background: linear-gradient(to bottom, #F71BA2, #F71BA2);
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    cursor: pointer; /* Change cursor to indicate clickable */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    transition: all 0.3s ease; /* Smooth transition for effects */
+}
+
+/* Style for the music icon */
+#muteButton:not(.muted)::before {
+    content: '\f028'; /* Font Awesome icon unicode for unmuted speaker */
+    font-family: 'Font Awesome 5 Free'; /* Specify the font family */
+    font-weight: 900; /* Required for solid style */
+    color: white; /* Icon color */
+    text-shadow: none; /* Optionally remove text shadow from icon */
+    font-size: 24px; /* Icon size */
+    transition: transform 0.3s ease; /* Smooth transition for the icon transform */
+}
+
+/* When music is muted, change icon to muted speaker */
+#muteButton.muted::before {
+    content: '\f6a9'; /* Font Awesome icon unicode for muted speaker */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900; /* Required for solid style */
+    color: white; /* Icon color */
+    text-shadow: none; /* Optionally remove text shadow from icon */
+    font-size: 24px; /* Icon size */
+    transition: transform 0.3s ease; /* Smooth transition for the icon transform */
+}
 
 .footer {
-    background-color: var(--primary-background);
+    background-image: linear-gradient(to right, #f71ba2, #e1389f, #f71ba2); /* Subtle gradient around #f71ba2 */
     color: white;
     padding: 10px;
     font-weight: 600;
