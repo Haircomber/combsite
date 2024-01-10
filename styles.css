@@ -7,11 +7,11 @@
     
 }
 
-
 /* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--secondary-background); /* Set the background color for the entire page */
+
     margin: 0; /* Optional: Remove default margin */
     padding: 0; /* Optional: Remove default padding */
     color: white; /* Set a default text color for the entire page (if desired) */
@@ -305,6 +305,7 @@ body {
 
 .feature {
     background-color: var(--third-background);
+    background: linear-gradient(to bottom right, #f71ba2, #c50f7e);
     padding: 20px;
     border-radius: 10px;
     display: flex;
@@ -315,7 +316,7 @@ body {
     min-width: 250px; /* Minimum width of the feature box */
     max-width: 800px; /* Maximum width of the feature box */
     min-height: 250px; /* Minimum height of the feature box */
-    max-height: 250px; /* Maximum height of the feature box */
+    max-height: 350px; /* Maximum height of the feature box */
     box-sizing: border-box; /* Include padding and border in box size */
     overflow: hidden; /* Hide overflow */
     margin-bottom: 5px; /* Spacing between feature blocks */
@@ -338,7 +339,7 @@ body {
 }
 
 .feature p {
-    font-size: 20px;
+    font-size: 24px;
     color: white;
     text-align: center;
     margin: 0; /* Reset margin */
@@ -353,6 +354,23 @@ body {
     align-items: center;
     gap: 10px;
     width: 100%; /* Ensure the flex container takes the full width */
+}
+
+/* Individual Styles for Feature Images */
+.infinityf {
+    margin-top: -40px; /* Adjust this value to move the image up or down */
+}
+
+.privacyf {
+    margin-top: -5px; /* Adjust this value to move the image up or down */
+}
+
+.partyf {
+    margin-top: -90px;    /* Adjust margin-top as needed */
+}
+
+.miningf {
+    margin-top: -30px;    /* Adjust margin-top as needed */
 }
 
 .chart-container {
