@@ -373,6 +373,21 @@ body {
     margin-top: -30px;    /* Adjust margin-top as needed */
 }
 
+.text-link {
+    color: #ff69b4; /* Lighter, vibrant pink for better visibility */
+    text-decoration: none; /* Removes the default underline */
+    transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth transition for color and underline */
+}
+
+.text-link:hover, .text-link:focus {
+    color: #c71585; /* Darker pink for hover state to add contrast */
+    text-decoration: underline; /* Adds underline on hover */
+    text-decoration-color: #c71585; /* Custom underline color matching the hover state color */
+    text-decoration-thickness: 2px; /* Adjusts the thickness of the underline for better visibility */
+    text-underline-offset: 3px; /* Adjusts the position of the underline */
+}
+
+
 .chart-container {
     background-color: var(--third-background); /* Light pink background */
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Shadow effect */
