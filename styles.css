@@ -313,9 +313,9 @@ body {
     align-items: center;
     justify-content: flex-start; /* Align content to the start */
     gap: 10px; /* Space between content */
-    min-width: 250px; /* Minimum width of the feature box */
+    /*min-width: 250px; /* Minimum width of the feature box */
     max-width: 800px; /* Maximum width of the feature box */
-    min-height: 250px; /* Minimum height of the feature box */
+    /*min-height: 250px; /* Minimum height of the feature box */
     max-height: 350px; /* Maximum height of the feature box */
     box-sizing: border-box; /* Include padding and border in box size */
     overflow: hidden; /* Hide overflow */
@@ -465,6 +465,10 @@ body {
     color: white;
 }
 
+.top-fee-text, .comb-price-text {
+    font-size: 2em;
+}
+
 .p2wsh-address {
     display: block; /* Treat as a block-level element */
     text-align: center; /* Center the text */
@@ -482,6 +486,44 @@ body {
 #transactionList {
     height: 100%; /* Make sure the list takes up the entire height of its container */
 }
+
+.clickableFee {
+    cursor: pointer;
+}
+
+
+.fee-tooltip {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.fee-tooltip .fee-tooltiptext {
+    visibility: hidden;
+    width: auto; /* allows the tooltip to fit the content */
+    background-color: var(--primary-background);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* position above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.8em; /* smaller text */
+    pointer-events: none; /* prevents the tooltip from being clickable */
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+/*
+.fee-tooltip:hover .fee-tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+ */
 
 /* pinkpill collage */
 .image-collage-container {
@@ -586,6 +628,53 @@ body {
     transition: transform 0.3s ease; /* Smooth transition for the icon transform */
 }
 
+/* IRL CLAIM SECTION */
+.irl-claims {
+    margin-top: 20px; /* Add some space between the content above and this section */
+}
+
+.irl-claims .irl-title {
+    font-size: 48px; /* Increase the font size of the title */
+    font-weight: bold; /* Make the title bold */
+    text-align: center; /* Center the title text */
+    margin: 20px 0; /* Add some margin above and below the title */
+    display: flex; /* Use flexbox to place the image between CLAIM and IRL */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+.irl-claims .irl-title::before,
+.irl-claims .irl-title::after {
+    content: ""; /* Add pseudo-elements for spacing */
+    display: inline-block;
+    width: 50px; /* Space width */
+    height: 10px; /* Just for visual spacing, adjust as needed */
+    background: transparent; /* Transparent background */
+}
+
+.irl-claims .irl-title img {
+    width: 80px; /* Size of the smaller image between CLAIM and IRL */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 10px; /* Space on the sides of the image */
+}
+
+.new-images-container {
+    display: grid; /* Use grid layout for the images */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Create columns that automatically fill the space */
+    gap: 20px; /* Space between the images */
+    padding: 20px; /* Padding around the grid */
+    justify-items: center; /* Center the items in their grid cell */
+}
+
+.new-style-images {
+    width: 100%; /* Each image will fill its cell */
+    max-width: 200px; /* Maximum size of the images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for the images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+
 .footer {
     background-image: linear-gradient(to right, #f71ba2, #e1389f, #f71ba2); /* Subtle gradient around #f71ba2 */
     color: white;
@@ -616,13 +705,94 @@ body {
     color: #d80073; /* Color change on hover */
 }
 
+/* phone changes */
+
+@media (max-width: 768px) {
+    /* Adjust the main title for smaller screens */
+    .main-title {
+        font-size: 5vw; /* Scale the font size based on the viewport width */
+        padding: 20px 10px; /* Reduce the top and bottom padding, and add some side padding */
+    }
+
+    /* Make the header more compact */
+    .header {
+        flex-direction: column; /* Stack the header items vertically */
+        padding: 10px; /* Reduce the overall padding */
+    }
+
+    /* Adjust navigation links for easier tapping */
+    .nav-links a {
+        padding: 12px 15px; /* Increase padding for larger touch targets */
+        margin: 5px 0; /* Add some vertical spacing between links */
+    }
+
+    /* Stack navigation links vertically */
+    .nav-links-left, .nav-links-center, .nav-links-right {
+        flex-direction: column;
+        align-items: center; /* Center-align items for a tidy appearance */
+    }
+
+    /* Simplify the banner for smaller screens */
+    .banner .banner-text {
+        font-size: 18px; /* Decrease the font size for space efficiency */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    /* Adjust feature sections to stack vertically */
+    .features, .feature-row {
+        flex-direction: column;
+        align-items: center; /* Center-align feature sections */
+    }
+
+    /* Make each feature take the full width */
+    .feature {
+        width: 100%; /* Full width for each feature block */
+        max-width: 100%; /* Ensure blocks don't exceed the container's width */
+        padding: 15px; /* Adjust padding to suit smaller screens */
+        margin-bottom: 20px; /* Increase margin for clearer separation */
+    }
+
+    /* Adjust feature content to stack vertically */
+    .feature-content {
+        flex-direction: column;
+        text-align: center; /* Center-align the text */
+    }
+
+    /* Scale down images within features */
+    .feature img {
+        max-width: 80px; /* Reduce the size of images */
+        /*margin-bottom: 10px; /* Add space between the image and the text */
+    }
+
+    /* Adjust feature titles and paragraphs for readability */
+    .feature-title, .feature p {
+        font-size: 16px; /* Slightly reduce font size for space efficiency */
+    }
+
+    /* Adjust the footer for smaller screens */
+    .footer {
+        flex-direction: column; /* Stack footer content vertically */
+        padding: 20px 10px; /* Adjust padding */
+    }
+
+    .footer-content a {
+        font-size: 30px; /* Scale down icons for consistency */
+        margin: 10px 20px; /* Adjust spacing around icons */
+    }
+}
+
+
+/* end phone changes */
+
+
 @media (max-width: 768px) {
     .feature-content {
         flex-direction: column; /* Stack image and text on small screens */
     }
 
     .feature img {
-        max-width: 100%; /* Ensure the image is responsive within the feature box */
+        max-width: 80px; /* Ensure the image is responsive within the feature box */
+        height: auto;
         margin-bottom: 10px; /* Space between the image and paragraph */
     }
 

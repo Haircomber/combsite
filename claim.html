@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"> <!-- Link to your styles.css file -->
 </head>
-<body>
+<body onLoad="javascript:loadClaims()">
     <div class="header"></div>
 
     <div class="chart-container">
@@ -15,14 +15,14 @@
         
                 <!-- Top Fee -->
                 <div class="top-fee">
-                    <div>Top Fee:</div>
-                    <span id="topFeeMBTC">0.256 mBTC</span>
-                    <div class="p2wsh-address" style="font-size: 0.8em;">3QREthnL5Lt12345ab67cd890e12f345gh67</div>
+                    <div class="top-fee-text">Top Fee:</div>
+                    <span id="topFeeMBTC">Loading...</span>
+                    <div id="topFeeAddr" class="p2wsh-address" style="font-size: 0.8em;">Loading...</div>
                 </div>
                 
                 <!-- Comb Price -->
                 <div class="comb-price">
-                    <div>Comb Price:</div>
+                    <div class="comb-price-text">Comb Price:</div>
                     <span id="combPriceDollars">$6.45</span>
                 </div>
             
@@ -30,12 +30,7 @@
                 <div class="content-wrapper">
                 <ul id="transactionList">
                     <!-- Updated list items for mem pool transactions with mock data -->
-                    <li>3N8auHdN9rt... - 0.00045</li>
-                    <li>3M9qvHKtgAR... - 0.00030</li>
-                    <li>3MBbqf3Asfa... - 0.00030</li>
-                    <li>3N5hJ5jE8na... - 0.00030</li>
-                    <li>3P3R5n8xnjq... - 0.00030</li>
-                    <li>3QREthnL5Lt... - 0.00060</li>
+                    <li>Loading...</li>
                     <!-- ... more list items ... -->
                 </ul>
             </div>
@@ -59,19 +54,37 @@
         data: {
             datasets: [{
                 label: 'Top Fee',
+                backgroundColor: '#ffffff', // Darker pink for dots
+                borderColor: 'pink', // Border color for the dots
+                data: [],
+                showLine: true, // Line connecting the dots
+                pointRadius: 10, // Increase the radius of the points (4 times larger than default)
+                pointHoverRadius: 12, // Optional: Increase the radius when hovering over the points
+                fill: false // Whether to fill the area under the line
+            },{
+                label: 'Random Fee',
                 backgroundColor: '#f71ba2', // Darker pink for dots
                 borderColor: 'white', // Border color for the dots
                 data: [],
                 showLine: false, // No line connecting the dots
-                pointRadius: 10, // Increase the radius of the points (4 times larger than default)
-                pointHoverRadius: 12, // Optional: Increase the radius when hovering over the points
+                pointRadius: 9, // Increase the radius of the points (4 times larger than default)
+                pointHoverRadius: 11, // Optional: Increase the radius when hovering over the points
             }]
+        },
+        defaults: {
+            elements: {
+                line: {
+                    backgroundColor: '#ffffff',
+                    borderColor: '#ffffff'
+                }
+            },
         },
         options: {
             scales: {
                 y: {
+                    type: 'logarithmic',
                     beginAtZero: true,
-                    suggestedMax: 1000,
+                    suggestedMax: 100,
                     ticks: {
                         color: 'white', // Makes y-axis tick labels white
                         // Increase font size for visibility
@@ -109,6 +122,23 @@
                     labels: {
                         color: 'white', // Makes legend labels white
                     }
+                },
+                tooltip: {
+                     callbacks: {
+                        label: function(context) {
+                            var commit = "";
+                            for (var i in claims) {
+                                var tclaim = claims[i];
+                                if (tclaim.When.getTime() == context.parsed.x) {
+                                    if (tclaim.FeeWeightKb / 1000 == context.parsed.y) {
+                                        commit = segwitAddrEncodeFull(tclaim.Commitment)+": ";
+                                        break;
+                                    }
+                                }
+                            }
+                            return commit + context.parsed.y + " sats/WU";
+                        }
+                    }
                 }
             },
             layout: {
@@ -118,24 +148,17 @@
                     bottom: 50, // 50px bottom padding
                     left: 100 // 100px left padding
                 }
-            }
+            },
         }
     });
     
-    // Example of adding data dynamically
-    var currentTime = Date.now() / 1000; // Get current time in seconds
-    for (let i = 0; i <= 6 * 3600; i += 3600) { // 6 hours of data
-        chart.data.datasets[0].data.push({
-            x: currentTime + i, // Increment by one hour
-            y: Math.floor(Math.random() * 1000) // Random fee amount
-        });
-    }
     chart.update();
     </script>
     
 
 
 <script src="haircomb.js" defer></script>
+<script src="claim.js" defer></script>
 <footer></footer>
 </body>
 </html>
