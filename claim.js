@@ -292,8 +292,7 @@ function setTopFee() {
 
   // Set the top fee value
   document.getElementById("topFeeMBTC").innerText = 
-    topFeeClaim[0].FeeWeightKb / 1000 + " sats/WU (" +
-    topFeeClaim[0].FeeWeightKb / 250 + " sats/vbyte)";
+    `${topFeeClaim[0].FeeWeightKb / 250} sats/vB`;
 
   // Create clickable elements for the BTC address and commit
   let topFeeAddrDiv = document.getElementById("topFeeAddr");
@@ -311,8 +310,8 @@ function setTopFee() {
       segwitAddrEncodeFull(claim.Commitment).substring(segwitAddrEncodeFull(claim.Commitment).length - 4),
       segwitAddrEncodeFull(claim.Commitment)
     ));
-    li.appendChild(document.createTextNode(" - " + claim.FeeWeightKb / 1000 + " sats/WU (" +
-      claim.FeeWeightKb / 250 + " sats/vbyte)"));
+    // Only display sats/vB
+    li.appendChild(document.createTextNode(" - " + (claim.FeeWeightKb / 250).toFixed(3) + " sats/vB"));
     document.getElementById("transactionList").appendChild(li);
   }
 }
@@ -352,11 +351,13 @@ function setChart() {
       continue; // skip multidot
     }
     seenTx.add(claim.TxId);
+    // Add data point as sats/vB
     chart.data.datasets[claim.Top ? 0: 1].data.push({
-            x: claim.When,
-            y: claim.FeeWeightKb / 1000,
-        });
+      x: claim.When,
+      y: claim.FeeWeightKb / 250, // Convert to sats/vB
+    });
   }
   chart.update();
 }
+
 
