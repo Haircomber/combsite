@@ -28,27 +28,23 @@ function loadClaims() {
   document.body.append(html);
 }
 
+
 function p(data) {
   if (!data.Success) {
     return;
   }
   if ((data.Tx == null) && (data.Commits !== null)) {
 
-    for (let [commit, commitInfo] of Object.entries(data.Commits)) {
-      {
-        // delete it
-        for (var i = claims.length - 1; i >= 0; --i) {
-          if (claims[i].Commitment == commit) {
-            claims.splice(i,1);
-          }
-        }
+    // delete it
+    for (var i = claims.length - 1; i >= 0; --i) {
+      if (claims[i].Commitment in data.Commits) {
+        claims.splice(i,1);
       }
     }
 
-
   } else if ((data.Tx !== null) && (data.Commits == null)) {
 
-    const now = new Date();
+
     for (var txi in data.Tx) {
       var tx = data.Tx[txi];
       for (var outi in tx.TxOut) {
@@ -100,12 +96,22 @@ function load5dot() {
     var claim = claims[i];
     var commit = claim.Commitment.substring(0, 2*9);
     query += commit;
+    // every 256 commits we fire a separate filtering request
+    if ((i % 256) == 0) {
+      claimsURL = claimsDomain + "/00000001.0000000000000000.00000009.9999999999999999." + query + ".js";
+      let html = document.createElement("script");
+      html.src = claimsURL;
+      document.body.append(html);
+      //reset query
+      query = "";
+    }
   }
   claimsURL = claimsDomain + "/00000001.0000000000000000.00000009.9999999999999999." + query + ".js";
   let html = document.createElement("script");
   html.src = claimsURL;
   document.body.append(html);
 }
+
 
 //-- Segwit functions
 const charset = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
@@ -287,7 +293,7 @@ function setTopFee() {
   // Format the BTC address and commit
   let fullAddress = segwitAddrEncodeFull(topFeeClaim[0].Commitment);
   let formattedAddress = fullAddress.substring(0, 6) + "..." + fullAddress.substring(fullAddress.length - 4);
-  let fullCommit = topFeeClaim[0].Commitment;
+  let fullCommit = topFeeClaim[0].TxId;
   let formattedCommit = fullCommit.substring(0, 6) + "..." + fullCommit.substring(fullCommit.length - 4);
 
   // Set the top fee value

@@ -532,6 +532,13 @@ body {
     align-items: flex-start;
 }
 
+.pink-pill-image {
+    display: block; /* Ensures the image is a block-level element */
+    max-width: 90%; /* Limits the image width to 90% of its container */
+    height: auto; /* Keeps the image aspect ratio intact */
+    margin: 20px auto; /* Adds space around the image and centers it horizontally */
+}
+
 .image-collage {
     flex: 1; /* Allows the image collages to grow as needed */
     display: flex;
@@ -835,6 +842,10 @@ body {
         border-bottom: 1px solid white;
         padding: 5px 0; /* Adjust padding as needed */
         text-align: center; /* Center the text of list items */
+    }
+
+    .pink-pill-image {
+        max-width: 80%; /* Allows the image to be larger on smaller screens */
     }
 }
 

@@ -54,21 +54,21 @@
         data: {
             datasets: [{
                 label: 'Top Fee',
-                backgroundColor: '#ffffff', // Darker pink for dots
-                borderColor: 'pink', // Border color for the dots
+                backgroundColor: '#c50f7e', // Change to pink for Top Fee dots
+                borderColor: 'white', // Optional: change the border color if needed
                 data: [],
                 showLine: true, // Line connecting the dots
-                pointRadius: 10, // Increase the radius of the points (4 times larger than default)
-                pointHoverRadius: 12, // Optional: Increase the radius when hovering over the points
-                fill: false // Whether to fill the area under the line
+                pointRadius: 10, // Size of the points
+                pointHoverRadius: 12, // Size when hovered
+                fill: false // No fill under the line
             },{
                 label: 'Random Fee',
-                backgroundColor: '#f71ba2', // Darker pink for dots
-                borderColor: 'white', // Border color for the dots
+                backgroundColor: '#ffffff', // Change to white for Random Fee dots
+                borderColor: '#c50f7e', // Optional: change the border color if needed
                 data: [],
                 showLine: false, // No line connecting the dots
-                pointRadius: 9, // Increase the radius of the points (4 times larger than default)
-                pointHoverRadius: 11, // Optional: Increase the radius when hovering over the points
+                pointRadius: 9, // Size of the points
+                pointHoverRadius: 11, // Size when hovered
             }]
         },
         defaults: {
@@ -86,67 +86,60 @@
                     beginAtZero: true,
                     suggestedMax: 100,
                     ticks: {
-                        color: 'white', // Makes y-axis tick labels white
-                        // Increase font size for visibility
+                        color: 'white',
                         font: {
-                            size: 14, // You can adjust the size as needed
+                            size: 14,
                         },
                     },
                     grid: {
-                        color: 'white', // Makes y-axis grid lines white
-                        lineWidth: 3, // Makes y-axis grid lines thicker
-                        drawBorder: true, // Ensure the axis line is drawn
+                        color: 'white',
+                        lineWidth: 3,
+                        drawBorder: true,
                     }
                 },
                 x: {
                     ticks: {
-                        color: 'white', // Makes x-axis tick labels white
-                        // Format x-axis tick labels to display hours
+                        color: 'white',
                         callback: function(value, index, values) {
-                            return moment(value).format('HH:mm'); // Use moment.js to format the time
+                            return moment(value).format('HH:mm');
                         },
-                        // Increase font size for visibility
                         font: {
-                            size: 14, // You can adjust the size as needed
+                            size: 14,
                         },
                     },
                     grid: {
-                        color: 'white', // Makes x-axis grid lines white
-                        lineWidth: 3, // Makes x-axis grid lines thicker
-                        drawBorder: true, // Ensure the axis line is drawn
+                        color: 'white',
+                        lineWidth: 3,
+                        drawBorder: true,
                     }
                 }
             },
             plugins: {
                 legend: {
                     labels: {
-                        color: 'white', // Makes legend labels white
+                        color: 'white', // This ensures the legend labels are white
+                        usePointStyle: true,
                     }
                 },
                 tooltip: {
-                     callbacks: {
+                    callbacks: {
                         label: function(context) {
-                            var commit = "";
-                            for (var i in claims) {
-                                var tclaim = claims[i];
-                                if (tclaim.When.getTime() == context.parsed.x) {
-                                    if (tclaim.FeeWeightKb / 1000 == context.parsed.y) {
-                                        commit = segwitAddrEncodeFull(tclaim.Commitment)+": ";
-                                        break;
-                                    }
-                                }
+                            var label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
                             }
-                            return commit + context.parsed.y + " sats/vB";
+                            label += parseFloat(context.parsed.y).toFixed(3) + ' sats/vB';
+                            return label;
                         }
                     }
                 }
             },
             layout: {
-                padding: { // Padding around the canvas
-                    top: 50, // 50px top padding
-                    right: 100, // 100px right padding
-                    bottom: 50, // 50px bottom padding
-                    left: 100 // 100px left padding
+                padding: {
+                    top: 50,
+                    right: 100,
+                    bottom: 50,
+                    left: 100
                 }
             },
         }
