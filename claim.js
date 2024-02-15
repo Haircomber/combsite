@@ -43,7 +43,6 @@ function p(data) {
     }
   } else if ((data.Tx !== null) && (data.Commits == null)) {
 
-    const now = new Date();
     for (var txi in data.Tx) {
       var tx = data.Tx[txi];
       for (var outi in tx.TxOut) {
