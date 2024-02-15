@@ -93,13 +93,21 @@ function p(data) {
   return;
 }
 
-
 function load5dot() {
   var query = "";
   for (var i in claims) {
     var claim = claims[i];
     var commit = claim.Commitment.substring(0, 2*9);
     query += commit;
+    // every 256 commits we fire a separate filtering request - this is needed because the server does have limited capacity
+    if ((i % 256) == 255) {
+      claimsURL = claimsDomain + "/00000001.0000000000000000.00000009.9999999999999999." + query + ".js";
+      let html = document.createElement("script");
+      html.src = claimsURL;
+      document.body.append(html);
+      //reset query
+      query = "";
+    }
   }
   claimsURL = claimsDomain + "/00000001.0000000000000000.00000009.9999999999999999." + query + ".js";
   let html = document.createElement("script");
