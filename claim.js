@@ -2,6 +2,7 @@ var claimsDomain = "https://core.haircomber.com";
 var claims = [];
 const seenClaims = new Set();
 var blockHash = "";
+var blockHeight = 0;
 var btcPrice = 50000; // TODO: use real btc price
 
 function getTopNClaims(n) {
