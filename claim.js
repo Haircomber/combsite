@@ -35,19 +35,12 @@ function p(data) {
     return;
   }
   if ((data.Tx == null) && (data.Commits !== null)) {
-
-    for (let [commit, commitInfo] of Object.entries(data.Commits)) {
-      {
-        // delete it
-        for (var i = claims.length - 1; i >= 0; --i) {
-          if (claims[i].Commitment == commit) {
-            claims.splice(i,1);
-          }
-        }
+    // delete it
+    for (var i = claims.length - 1; i >= 0; --i) {
+      if (claims[i].Commitment in data.Commits) {
+        claims.splice(i,1);
       }
     }
-
-
   } else if ((data.Tx !== null) && (data.Commits == null)) {
 
     const now = new Date();
