@@ -2,6 +2,8 @@ var claimsDomain = "https://core.haircomber.com";
 var claims = [];
 const seenClaims = new Set();
 var blockHash = "";
+var blockHeight = 0;
+var btcPrice = 50000; // TODO: use real btc price
 
 function getTopNClaims(n) {
     const seenTx = new Set();
@@ -64,6 +66,7 @@ function p(data) {
 
             FeeWeightKb: tx.FeeWeightKb,
             Commitment: out.Commitment,
+            Fee: tx.Fee,
             Top: false,
           });
         }
@@ -73,6 +76,7 @@ function p(data) {
     if (claims.length > 0) {
       if (data.BlockHash != blockHash) {
         blockHash = data.BlockHash;
+        blockHeight = data.BlockHeight;
         // round of filtering
         load5dot();
         return;
@@ -107,6 +111,18 @@ function load5dot() {
   document.body.append(html);
 }
 
+//-- Coinbase functions
+
+function Coinbase(height) {
+	if ((height >= 21835313) || (height == 0)) {
+		return 0
+	}
+	const lost_natasha = 0.00000001;
+	var ll = Math.log2((height) + lost_natasha);
+	var l = Math.log2((height));
+	var subsidy_proposed = 210000000 - (Math.floor(l*l*l*l*l*ll));
+	return subsidy_proposed;
+}
 //-- Segwit functions
 const charset = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
 
@@ -283,6 +299,7 @@ function setTopFee() {
     return;
   }
   topFeeClaim.sort((a, b) => b.FeeWeightKb - a.FeeWeightKb);
+  document.getElementById("combPriceDollars").innerText = "$" + Math.round(100 * btcPrice * topFeeClaim[0].Fee / Coinbase(blockHeight+1)) / 100;
 
   // Format the BTC address and commit
   let fullAddress = segwitAddrEncodeFull(topFeeClaim[0].Commitment);
