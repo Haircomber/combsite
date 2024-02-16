@@ -202,7 +202,15 @@ body {
     font-size: 60px; /* Large font size for main title */
     font-weight: 900; /* Bold font weight */
     color: #FFFFFF; /* White color for the text */
-    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    text-shadow: 
+        -2px -2px 0 var(--primary-background),  
+         2px -2px 0 var(--primary-background),
+         -2px 2px 0 var(--primary-background),
+         2px 2px 0 var(--primary-background),
+        -1px -1px 0 var(--primary-background),  
+         1px -1px 0 var(--primary-background),
+         -1px 1px 0 var(--primary-background),
+         1px 1px 0 var(--primary-background); /* Creates a thicker border effect */
     padding-top: 30px; /* Increases padding at the top */
     padding-bottom: 30px; /* Padding at the bottom */
     letter-spacing: 2px; /* Optional: Increases spacing between letters */
@@ -210,81 +218,94 @@ body {
 }
 
 /* Banner Styles */
-.banner {
-    background: linear-gradient(to bottom right, #c50f7e, #e1389f);
 
-    text-align: center; /* Center align the content */
+.banner-container {
+    display: flex;
+    flex-direction: row; /* Align children horizontally */
+    justify-content: center; /* Center the children */
+    align-items: center; /* Vertically align the children in the middle */
+    gap: 20px; /* Add some space between the items */
+    flex-wrap: wrap;
+}
+
+.feature-titles, .ascii-banner, .banner {
+    flex: 1 1 300px; /* Allow each item to grow equally */
+    text-align: center; /* Center-align the text */
+}
+
+.banner {
     padding: 20px;
+    display: flex; /* This will allow you to use justify-content and align-items */
+    justify-content: center; /* This will center the content vertically */
+    align-items: center; /* This will center the content horizontally */
+    text-align: left; /* Center align the content */
 }
 
 .banner .banner-text {
-    font-size: 26px;
+    font-size: 18px; /* Reduced font size for a better fit */
+    line-height: 1.4; /* Adjust line height for better readability */
     font-weight: 800;
     color: white;
-    text-align: center; /* Center align the content */
-    padding: 0 30px; /* Adds 10px padding to the left and right */
+    padding: 10px 30px; /* Adjust padding to reduce height and maintain readability */
     margin: 0 auto; /* Centers the text block within the banner */
-    max-width: calc(100% - 60px);
+    max-width: calc(100% - 60px); /* You can adjust this value as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, rgba(247, 27, 162, 0.4), rgba(247, 27, 162, 0));
+    border-radius: 20px;
 }
 
-.ascii-banner{
-    display:flex;
-    justify-content:center;
+.ascii-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* This will vertically center the ASCII art if the container is taller than the art */
+    flex: 1; /* This ensures the container can grow */
 }
 
 .ascii-banner pre {
-    color: #FFFFFF; /* Keeps the ASCII art white */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Black shadow for depth */
-    font-weight: bold; /* Only if it doesn't distort your ASCII art */
-    padding: 10px; /* Adds some padding around the text */
-    border-radius: 5px; /* Optional: Rounds the corners if you like */
-    display: inline-block; /* Wraps the background tightly around the text */
-    position: relative;
+    font-family: 'Courier New', Courier, monospace; /* Ensures consistent character width */
+    white-space: pre; /* Preserves whitespace and line breaks */
+    display: block; /* Ensures the ASCII art is on its own line */
+    overflow-x: auto; /* Allows horizontal scrolling if necessary */
+    font-size: 12px; /* Adjust the font size as needed */
+    margin: 0; /* Removes default margin from 'pre' */
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    text-align: left; /* Aligns text to the left */
 }
 
 .ascii-banner span.clickable {
-    position: relative;
-    z-index: 2; /* Adjust as needed to bring it to the top of the stacking order */
     cursor: default; /* Keeps the cursor as the default pointer */
 }
 
-
-/* Banner feature Titles Styles */
+/* Adjusted .feature-titles and .title for Flexbox */
 .feature-titles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    /* Removed absolute positioning */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Align titles vertically */
+    justify-content: center; /* Center titles vertically */
+    align-items: center; /* Center titles horizontally */
 }
 
 .title {
-    position: absolute;
+    /* Removed absolute positioning and related properties */
     font-size: 30px;
-    font-weight: 900; /* Makes the font bolder */
-    color: #ffff; /* Keeps the text white */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a shadow for depth */
+    font-weight: 900;
+    color: #ffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     background: linear-gradient(to bottom, rgba(247, 27, 162, 0.4), rgba(247, 27, 162, 0));
-    border-radius: 20px; /* Optional: Rounds the corners of the background box */
-    padding: 10px; /* Adds space inside the background box */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0; /* Added margin for spacing between titles */
+    transition: all 0.3s ease;
 }
 
 .title:hover {
-    background: rgba(255, 255, 255, 0.2); /* Lightens the background on hover */
-    color: var(--primary-background); /* Changes text color on hover - choose a color that matches your branding */
-    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
 }
-
-#title-1 { top: 225px; left: 350px; } /* Position for 'Privacy' */
-#title-2 { top: 350px; left: 350px; } /* Position for 'Post-Quantum Security' */
-#title-3 { top: 475px; left: 350px; } /* Position for 'Mining Incentives' */
-#title-4 { top: 290px; right: 300px; } /* Position for '3rd Party Services' */
-#title-5 { top: 410px; right: 410px; } /* Position for 'Scalability' */
-#title-6 { top: 540px; right: 110px; } /* Position for 'Bitcoin Blockchain' */
 
 
 /* Features Section Styles */
@@ -385,6 +406,23 @@ body {
     text-decoration-color: #c71585; /* Custom underline color matching the hover state color */
     text-decoration-thickness: 2px; /* Adjusts the thickness of the underline for better visibility */
     text-underline-offset: 3px; /* Adjusts the position of the underline */
+}
+
+/* how to get haircomb */
+.getcomb {
+    background: linear-gradient(to bottom right, #c50f7e, #e1389f);
+    text-align: center; /* Center align the content */
+    padding: 20px;
+}
+
+.getcomb .getcomb-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    text-align: center; /* Center align the content */
+    padding: 0 30px; /* Adds 10px padding to the left and right */
+    margin: 0 auto; /* Centers the text block within the banner */
+    max-width: calc(100% - 60px);
 }
 
 
@@ -547,7 +585,7 @@ body {
     padding: 10px;
     border: 2px solid var(--secondary-background); /* Sets the border color */
     border-radius: 10px; /* Rounded corners for the border */
-    background-image: linear-gradient(to bottom, rgba(225, 56, 159, 0.7), rgba(197, 15, 126, 0.7));
+    background-image: linear-gradient(to top, rgba(225, 56, 159, 0.7), rgba(197, 15, 126, 0.7));
     color: white; /* Text color */
     white-space: nowrap;
     margin: 10px 0; /* Add margin for spacing, adjust as needed */
@@ -778,9 +816,19 @@ body {
     }
 
     /* Simplify the banner for smaller screens */
+    .banner-container {
+        flex-direction: column; /* Stack children vertically on smaller screens */
+    }
+
+    /* Optional: Adjust the padding and text size for smaller screens */
+    .banner .banner-text, .feature-titles .title, .ascii-banner pre {
+        font-size: 16px; /* Adjust font size for smaller screens if necessary */
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    /* If you want to center the text for the .banner-text on smaller screens */
     .banner .banner-text {
-        font-size: 18px; /* Decrease the font size for space efficiency */
-        padding: 15px; /* Adjust padding for smaller screens */
+        text-align: center;
     }
 
     /* Adjust feature sections to stack vertically */
