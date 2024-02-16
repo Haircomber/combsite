@@ -304,8 +304,6 @@ function setTopFee() {
   // Format the BTC address and commit
   let fullAddress = segwitAddrEncodeFull(topFeeClaim[0].Commitment);
   let formattedAddress = fullAddress.substring(0, 6) + "..." + fullAddress.substring(fullAddress.length - 4);
-  let fullTxId = topFeeClaim[0].TxId;
-  let formattedTxId = fullTxId.substring(0, 6) + "..." + fullTxId.substring(fullTxId.length - 4);
 
   // Set the top fee value
   document.getElementById("topFeeMBTC").innerText = 
@@ -315,7 +313,7 @@ function setTopFee() {
   let topFeeAddrDiv = document.getElementById("topFeeAddr");
   topFeeAddrDiv.innerHTML = ""; // Clear previous content
   topFeeAddrDiv.appendChild(createClickableElement(formattedAddress, fullAddress));
-  topFeeAddrDiv.appendChild(createClickableElement(formattedTxId, fullTxId));
+  // The line below that appends formattedTxId is removed, so it won't be displayed anymore.
 
   // Update the transaction list with clickable formatted BTC addresses
 document.getElementById("transactionList").innerHTML = "";
