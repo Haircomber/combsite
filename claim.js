@@ -318,19 +318,31 @@ function setTopFee() {
   topFeeAddrDiv.appendChild(createClickableElement(formattedTxId, fullTxId));
 
   // Update the transaction list with clickable formatted BTC addresses
-  document.getElementById("transactionList").innerHTML = "";
-  for (var i in topFeeClaim) {
-    var claim = topFeeClaim[i];
-    let li = document.createElement("li");
-    li.appendChild(createClickableElement(
-      segwitAddrEncodeFull(claim.Commitment).substring(0, 6) + "..." + 
-      segwitAddrEncodeFull(claim.Commitment).substring(segwitAddrEncodeFull(claim.Commitment).length - 4),
-      segwitAddrEncodeFull(claim.Commitment)
-    ));
-    // Only display sats/vB
-    li.appendChild(document.createTextNode(" - " + (claim.FeeWeightKb / 250).toFixed(3) + " sats/vB"));
-    document.getElementById("transactionList").appendChild(li);
-  }
+document.getElementById("transactionList").innerHTML = "";
+for (var i in topFeeClaim) {
+  var claim = topFeeClaim[i];
+  let li = document.createElement("li");
+  
+  // Create a span for the address
+  let addressSpan = document.createElement("span");
+  addressSpan.classList.add("transaction-address");
+  addressSpan.appendChild(createClickableElement(
+    segwitAddrEncodeFull(claim.Commitment).substring(0, 6) + "..." + 
+    segwitAddrEncodeFull(claim.Commitment).substring(segwitAddrEncodeFull(claim.Commitment).length - 4),
+    segwitAddrEncodeFull(claim.Commitment)
+  ));
+  
+  // Create a span for the fee
+  let feeSpan = document.createElement("span");
+  feeSpan.classList.add("transaction-fee");
+  feeSpan.textContent = " - " + (claim.FeeWeightKb / 250).toFixed(3) + " sats/vB";
+  
+  // Append both spans to the list item
+  li.appendChild(addressSpan);
+  li.appendChild(feeSpan);
+  
+  document.getElementById("transactionList").appendChild(li);
+}
 }
 
 function createClickableElement(displayText, fullText) {

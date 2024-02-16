@@ -449,7 +449,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 40px;
 }
 
 .data-above-chart > div {
@@ -489,7 +488,6 @@ body {
 
 .top-fee, .comb-price {
     text-align: center; /* Center the text within these divs */
-    margin-top: 60px;
 }
 
 .top-fee div, .comb-price div {
@@ -536,6 +534,11 @@ body {
     cursor: pointer;
 }
 
+.transaction-address, .transaction-fee {
+    display: inline-block;
+    margin-right: 10px; /* Adds spacing between the address and fee */
+  }
+  
 
 .fee-tooltip {
     position: relative;
@@ -563,7 +566,7 @@ body {
     transition: visibility 0s, opacity 0.3s ease-in-out;
   }
 
-  .circle-background {
+.circle-background {
     display: inline-block;
     background-image: linear-gradient(to top, rgba(225, 56, 159, 0.7), rgba(197, 15, 126, 0.7));
     border: 2px solid var(--secondary-background); /* Sets the border color */
@@ -759,34 +762,40 @@ body {
 
 
 .footer {
-    background-image: linear-gradient(to right, #f71ba2, #e1389f, #f71ba2); /* Subtle gradient around #f71ba2 */
+    background-image: linear-gradient(to right, #f71ba2, #e1389f, #f71ba2);
     color: white;
     padding: 10px;
     font-weight: 600;
-    position: relative; /* Changed from absolute to relative */
-    width: 100%;
+    position: relative; /* Keep as relative */
+    width: 100%; /* Full width */
     border-top: 1px solid var(--secondary-background);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box; /* Include padding in the width */
 }
 
 .footer-content {
+    box-sizing: border-box; /* Include padding in the width */
     padding-left: 50px;
     padding-right: 50px;
+    width: 100%; /* Ensure it spans the full width of the footer */
+    max-width: 1200px; /* You can set a max-width if you want to limit the content width */
+    margin: 0 auto; /* This will center the footer content if it's less than the max-width */
 }
 
 .footer-content a {
-    color: white; /* Icon color */
-    margin: 0 40px; /* Spacing between icons */
-    font-size: 40px; /* Icon size */
-    transition: color 0.3s ease; /* Transition for hover effect */
+    color: white;
+    margin: 0 40px;
+    font-size: 40px;
+    transition: color 0.3s ease;
 }
 
 .footer-content a:hover {
-    color: #d80073; /* Color change on hover */
+    color: #d80073;
 }
+
 
 /* phone changes */
 
