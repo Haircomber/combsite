@@ -397,6 +397,7 @@ body {
 .text-link {
     color: #ff69b4; /* Lighter, vibrant pink for better visibility */
     text-decoration: none; /* Removes the default underline */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     transition: color 0.3s ease, text-decoration-color 0.3s ease; /* Smooth transition for color and underline */
 }
 
@@ -594,15 +595,55 @@ body {
     margin: 10px 0; /* Add margin for spacing, adjust as needed */
 }
 
+/* claim guide */
 
-
-/*
-.fee-tooltip:hover .fee-tooltiptext {
-    visibility: visible;
-    opacity: 1;
+/* Claim Guide Container */
+.claim-guide-container {
+    background: linear-gradient(to bottom right, #c50f7e, #e1389f);
+    margin: 20px auto; /* Center the container with some margin on the top and bottom */
+    padding: 20px; /* Add padding inside the container for spacing */
+    border-radius: 10px; /* Rounded corners for consistency with the chart container */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+    max-width: 1050px; /* Match the max width of the chart container */
 }
 
- */
+/* Claim Guide Quote */
+.claim-guide-quote {
+    color: var(--text-color); /* Use the predefined text color */
+    font-size: 1.2em; /* Increase to about twice the original size, considering it was smaller than the main text */
+    font-style: italic; /* Italicize the quote */
+    margin-bottom: 20px; /* Add some space below the quote */
+    text-align: center; /* Center-align the quote */
+    line-height: 1.4; /* Adjust line height for better readability */
+    padding: 0 20px; /* Add padding to the sides to prevent the text from touching the container edges */
+}
+
+/* Claim Guide Title */
+.claim-guide-title {
+    color: var(--text-color); /* Use the predefined text color */
+    margin-bottom: 15px; /* Add some space below the title */
+    font-size: 3em; /* Increase to about twice the original size */
+    text-align: center; /* Center-align the title */
+}
+
+.claim-guide-text::before {
+    content: '•'; /* Large dot symbol */
+    font-size: 4em; /* Increased size of the dot */
+    color: var(--primary-background); /* Color of the dot */
+    margin-right: 15px; /* Adjusted space between the dot and the text */
+    line-height: 1; /* Set the line height for the pseudo-element */
+    /* Remove the transform and top properties */
+}
+
+.claim-guide-text {
+    color: var(--text-color); /* Use the predefined text color */
+    margin-bottom: 0px; /* Add some space between paragraphs */
+    font-size: 1.6em; /* Keep the font size of the text as previously set */
+    line-height: 1.6; /* Maintain line height for readability */
+    display: flex; /* Use flexbox to align the dot and text properly */
+    align-items: center; /* Align items vertically in the center */
+    position: relative; /* Ensure the position is set to work with absolute positioning of children */
+}
 
 /* pinkpill collage */
 .image-collage-container {
@@ -810,6 +851,12 @@ body {
 
 .footer-content a:hover {
     color: #d80073;
+}
+
+@media screen and (min-width: 960px) {
+    .top-fee {
+        padding-left: 25px; /* Creates space inside the container, pushing content to the right */
+    }
 }
 
 
