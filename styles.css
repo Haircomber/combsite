@@ -738,15 +738,32 @@ body {
     background: transparent; /* Transparent background */
 }
 
-.irl-claims .irl-title img {
-    width: 80px; /* Size of the smaller image between CLAIM and IRL */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 10px; /* Space on the sides of the image */
+.irl-claims .irl-title {
+    text-align: center; /* Center the text within the title */
 }
+
+.irl-claims .irl-title img {
+    display: block; /* Make the image a block-level element */
+    width: 20px; /* Size of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto 0; /* Center the image horizontally and add some space above it */
+    border-radius: 10px; /* Rounded corners for the image */
+}
+
+.irl-image {
+    display: block; /* Ensure the image is a block-level element */
+    width: 250px; /* Set the desired width of the image */
+    max-width: 100%; /* Ensure the image is responsive and does not exceed its container's width */
+    height: auto; /* Maintain the image's aspect ratio */
+    margin: 20px auto; /* Center the image and add vertical spacing */
+    border-radius: 10px; /* Rounded corners */
+}
+
+
 
 .new-images-container {
     display: grid; /* Use grid layout for the images */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Create columns that automatically fill the space */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create columns that automatically fill the space */
     gap: 20px; /* Space between the images */
     padding: 20px; /* Padding around the grid */
     justify-items: center; /* Center the items in their grid cell */
@@ -754,12 +771,11 @@ body {
 
 .new-style-images {
     width: 100%; /* Each image will fill its cell */
-    max-width: 200px; /* Maximum size of the images */
+
     height: auto; /* Maintain aspect ratio */
     border-radius: 10px; /* Rounded corners for the images */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
 }
-
 
 .footer {
     background-image: linear-gradient(to right, #f71ba2, #e1389f, #f71ba2);
