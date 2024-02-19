@@ -605,6 +605,7 @@ body {
     border-radius: 10px; /* Rounded corners for consistency with the chart container */
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
     max-width: 1050px; /* Match the max width of the chart container */
+    position: relative;
 }
 
 /* Claim Guide Quote */
@@ -627,22 +628,31 @@ body {
 }
 
 .claim-guide-text::before {
-    content: '•'; /* Large dot symbol */
-    font-size: 4em; /* Increased size of the dot */
+    content: '•'; /* Dot symbol */
+    font-size: 2em; /* Size of the dot */
     color: var(--primary-background); /* Color of the dot */
-    margin-right: 15px; /* Adjusted space between the dot and the text */
-    line-height: 1; /* Set the line height for the pseudo-element */
-    /* Remove the transform and top properties */
+    position: absolute; /* Position the dot absolutely relative to its parent */
+    margin-right: 15px; /* Space between the dot and the text */
+    top: 0;
+    left: 0;
 }
 
 .claim-guide-text {
-    color: var(--text-color); /* Use the predefined text color */
-    margin-bottom: 0px; /* Add some space between paragraphs */
-    font-size: 1.6em; /* Keep the font size of the text as previously set */
-    line-height: 1.6; /* Maintain line height for readability */
-    display: flex; /* Use flexbox to align the dot and text properly */
-    align-items: center; /* Align items vertically in the center */
-    position: relative; /* Ensure the position is set to work with absolute positioning of children */
+    color: var(--text-color); /* Predefined text color */
+    margin-bottom: 10px; /* Space between paragraphs */
+    font-size: 1.6em; /* Font size of the text */
+    line-height: 1.6em; /* Line height for readability */
+    padding-left: 40px; /* Add padding to make space for the absolutely positioned dot */
+    margin-left: 20px; /* Add margin to the left to align with the container's text */
+    position: relative;
+}
+
+.step-image {
+    display: block; /* Ensures the image is on its own line */
+    margin: 10px auto; /* Centers the image and adds some space around it */
+    max-width: 100%; /* Ensures the image is responsive and doesn't overflow its container */
+    height: auto; /* Keeps the image aspect ratio */
+    margin-bottom: 0px;
 }
 
 /* pinkpill collage */
