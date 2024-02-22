@@ -652,7 +652,6 @@ body {
     margin: 10px auto; /* Centers the image and adds some space around it */
     max-width: 100%; /* Ensures the image is responsive and doesn't overflow its container */
     height: auto; /* Keeps the image aspect ratio */
-    margin-bottom: 0px;
 }
 
 /* pinkpill collage */
