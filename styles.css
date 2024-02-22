@@ -713,6 +713,12 @@ body {
     font-size: 24px;
 }
 
+.address-style{
+        color: white; /* Text color */
+        line-height: 1.6; /* Adjust line spacing for better readability */
+        font-size: 12px;
+}
+
 .audio-control {
     position: absolute; /* Absolute position relative to the closest positioned ancestor */
     top: 120px; /* Adjust as needed to place it above the pink-pill-container */
