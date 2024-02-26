@@ -53,7 +53,6 @@ body {
     display: flex;
     justify-content: center;
     /* Remove any margin or padding that might offset the centering */
-    margin-left: -45px;
     padding: 0;
 }
 
@@ -884,22 +883,64 @@ body {
         padding: 20px 10px; /* Reduce the top and bottom padding, and add some side padding */
     }
 
-    /* Make the header more compact */
+    /* Make the header more compact and ensure the logo is centered */
     .header {
-        flex-direction: column; /* Stack the header items vertically */
-        padding: 10px; /* Reduce the overall padding */
+        display: flex;
+        justify-content: space-between; /* This will push the nav links to the edges and center the logo */
+        padding: 10px; /* Adjust padding for mobile */
     }
 
-    /* Adjust navigation links for easier tapping */
+    /* Align the left and right nav links and allow them to grow equally */
+    .nav-links-left, .nav-links-right {
+        display: flex;
+        flex-grow: 1; /* Allow the left and right sections to grow */
+        justify-content: flex-start; /* Align left nav links to the start */
+    }
+
+    .nav-links-right {
+        justify-content: flex-end; /* Align right nav links to the end */
+    }
+
+    /* Adjust the center logo */
+    .nav-links-center .logo {
+        position: absolute; /* Position logo absolutely within the header */
+        left: 50%;
+        top: 5px;
+        transform: translateX(-50%); /* This will center the logo */
+        max-width: 40px; /* Adjust logo size if necessary */
+        height: auto;
+    }
+
+    /* Adjust the nav links */
     .nav-links a {
-        padding: 12px 15px; /* Increase padding for larger touch targets */
-        margin: 5px 0; /* Add some vertical spacing between links */
+        padding: 8px 10px; /* Adjust padding for nav links */
+        font-size: 14px; /* Adjust font size for nav links */
     }
 
-    /* Stack navigation links vertically */
-    .nav-links-left, .nav-links-center, .nav-links-right {
-        flex-direction: column;
-        align-items: center; /* Center-align items for a tidy appearance */
+    /* Ensure nav link sections are not set to grow and are centered */
+    .nav-links-center {
+        flex: 0; /* Prevent the center from growing */
+        display: flex;
+        justify-content: center; /* Center the logo */
+        align-items: center; /* Vertically align the logo */
+    }
+
+    /* Reduce space between nav link text */
+    .nav-links ul {
+        display: flex; /* Ensure that UL is a flex container */
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        list-style-type: none; /* Remove bullet points */
+        justify-content: center; /* Center the list items */
+        position: relative; /* Positioning context for the absolute logo */
+    }
+
+    .nav-links li {
+        margin: 0 5px; /* Adjust margin of list items */
+    }
+
+    .nav-links li:last-child {
+        margin-right: 0; /* Remove right margin of the last list item */
     }
 
     /* Simplify the banner for smaller screens */
@@ -916,6 +957,16 @@ body {
     /* If you want to center the text for the .banner-text on smaller screens */
     .banner .banner-text {
         text-align: center;
+    }
+
+    /* Adjust the ASCII art for smaller screens */
+    .ascii-banner pre {
+        font-size: 10px; /* You might need to go smaller depending on the screen size */
+        line-height: 1.2; /* Adjust line height to maintain the layout of the ASCII art */
+        margin: 0 auto; /* Center the ASCII art within its container */
+        overflow-x: auto; /* Allows scrolling if the art is too wide */
+        max-width: 100%; /* Ensure it doesn't overflow the screen width */
+        word-break: break-word; /* Allows the text to wrap and prevents horizontal scrolling */
     }
 
     /* Adjust feature sections to stack vertically */
@@ -936,12 +987,6 @@ body {
     .feature-content {
         flex-direction: column;
         text-align: center; /* Center-align the text */
-    }
-
-    /* Scale down images within features */
-    .feature img {
-        max-width: 80px; /* Reduce the size of images */
-        /*margin-bottom: 10px; /* Add space between the image and the text */
     }
 
     /* Adjust feature titles and paragraphs for readability */
@@ -973,7 +1018,7 @@ body {
     .feature img {
         max-width: 80px; /* Ensure the image is responsive within the feature box */
         height: auto;
-        margin-bottom: 10px; /* Space between the image and paragraph */
+        margin-bottom: 5px; /* Space between the image and paragraph */
     }
 
     .feature p {
@@ -983,6 +1028,40 @@ body {
     .feature {
         max-width: none; /* Remove max width on smaller screens */
         width: auto; /* Allow the feature boxes to adjust to content size */
+    }
+
+    .partyf {
+        margin-top: 0; /* Reset the negative margin for mobile view */
+        /* Add any additional styling needed to position the image correctly */
+    }
+
+    .miningf {
+        margin-top: 0;
+    }
+
+    .infinityf {
+        margin-top: 0;
+    }
+
+    .quantumf {
+        margin-top: 0;
+    }
+
+    .privacyf {
+        margin-top: 0;
+    }
+
+    .chart-container {
+        margin: 20px auto; /* Reduced margin */
+        padding: 10px; /* Reduced padding */
+        width: auto; /* Chart container width is automatic */
+        font-size: 2vw; /* This will scale text size with the viewport width */
+    }
+
+    #myChart {
+        width: 95vw; /* Set chart width relative to viewport width */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 300px; /* Optional: if you want to limit how tall the chart can be */
     }
 
     .data-above-chart {
