@@ -983,6 +983,10 @@ body {
         margin-bottom: 20px; /* Increase margin for clearer separation */
     }
 
+    .getcomb .getcomb-text{
+        font-size:3.5vw;
+    }
+
     /* Adjust feature content to stack vertically */
     .feature-content {
         flex-direction: column;
@@ -1094,6 +1098,10 @@ body {
         border-bottom: 1px solid white;
         padding: 5px 0; /* Adjust padding as needed */
         text-align: center; /* Center the text of list items */
+    }
+
+    .claim-guide-container{
+        font-size:2vw;
     }
 
     .pink-pill-image {
