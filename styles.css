@@ -1099,6 +1099,38 @@ body {
     .pink-pill-image {
         max-width: 80%; /* Allows the image to be larger on smaller screens */
     }
+
+    .pink-pill-content {
+        font-size: 2.5vw;
+    }
+
+    .irl-claims .irl-title {
+        font-size: 24px; /* Smaller font size for mobile */
+        /* Adjust margins if necessary */
+        margin: 10px 0;
+    }
+
+    .irl-claims .irl-title img {
+        width: 15px; /* Smaller image for mobile */
+        /* Adjust margins if necessary */
+        margin: 10px auto 0;
+    }
+
+    .irl-image {
+        width: 100px; /* Smaller width for mobile */
+        /* Center the image if necessary */
+        margin: 10px auto;
+    }
+
+    .address-style{
+        font-size: 1.2vw;
+    }
+
+    .new-images-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Smaller columns */
+        gap: 10px; /* Smaller gap between images */
+        padding: 10px; /* Smaller padding around the container */
+    }
 }
 
   
