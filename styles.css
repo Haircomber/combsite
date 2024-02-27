@@ -1113,6 +1113,10 @@ body {
         text-align: center; /* Center the text of list items */
     }
 
+    .price-container{
+        display: inline-flex; /* Use inline-flex to make the container only as wide as its content */
+    }
+
     .claim-guide-container{
         font-size:2vw;
     }
