@@ -365,6 +365,7 @@ body {
     margin: 0; /* Reset margin */
     flex-grow: 1; /* Allow the paragraph to fill the remaining space */
     overflow-y: auto; /* Enable scrolling for overflow content */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Ensure that the flex items do not grow beyond their containers */
@@ -879,7 +880,7 @@ body {
 @media (max-width: 768px) {
     /* Adjust the main title for smaller screens */
     .main-title {
-        font-size: 5vw; /* Scale the font size based on the viewport width */
+        font-size: 7vw; /* Scale the font size based on the viewport width */
         padding: 20px 10px; /* Reduce the top and bottom padding, and add some side padding */
     }
 
@@ -954,6 +955,14 @@ body {
         padding: 10px; /* Reduce padding on smaller screens */
     }
 
+    .feature-titles {
+        flex: 1 1 200px;
+    }
+
+    .feature-titles .title {
+        margin: 0;
+    }
+
     /* If you want to center the text for the .banner-text on smaller screens */
     .banner .banner-text {
         text-align: center;
@@ -961,7 +970,7 @@ body {
 
     /* Adjust the ASCII art for smaller screens */
     .ascii-banner pre {
-        font-size: 10px; /* You might need to go smaller depending on the screen size */
+        font-size: 8px; /* You might need to go smaller depending on the screen size */
         line-height: 1.2; /* Adjust line height to maintain the layout of the ASCII art */
         margin: 0 auto; /* Center the ASCII art within its container */
         overflow-x: auto; /* Allows scrolling if the art is too wide */
@@ -984,7 +993,7 @@ body {
     }
 
     .getcomb .getcomb-text{
-        font-size:3.5vw;
+        font-size:4vw;
     }
 
     /* Adjust feature content to stack vertically */
@@ -996,6 +1005,10 @@ body {
     /* Adjust feature titles and paragraphs for readability */
     .feature-title, .feature p {
         font-size: 16px; /* Slightly reduce font size for space efficiency */
+    }
+
+    .feature-title {
+        font-size: 6vw;
     }
 
     /* Adjust the footer for smaller screens */
