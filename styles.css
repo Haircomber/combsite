@@ -891,6 +891,13 @@ body {
         padding: 10px; /* Adjust padding for mobile */
     }
 
+    .dropdown-content {
+        position: absolute;
+        top: 100%; /* Align the top of the dropdown with the bottom of the nav link */
+        left: 0; /* Align the dropdown with the left edge of the nav link */
+        display: none; /* Initially hide the dropdown */
+    }
+
     /* Align the left and right nav links and allow them to grow equally */
     .nav-links-left, .nav-links-right {
         display: flex;
@@ -933,7 +940,7 @@ body {
         margin: 0; /* Remove margin */
         list-style-type: none; /* Remove bullet points */
         justify-content: center; /* Center the list items */
-        position: relative; /* Positioning context for the absolute logo */
+        position: absolute; /* Positioning context for the absolute logo */
     }
 
     .nav-links li {
@@ -1030,6 +1037,10 @@ body {
 @media (max-width: 768px) {
     .feature-content {
         flex-direction: column; /* Stack image and text on small screens */
+    }
+
+    .feature-content p {
+        font-weight: bold;
     }
 
     .feature img {

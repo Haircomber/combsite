@@ -71,10 +71,14 @@ function p(data) {
         blockHeight = data.BlockHeight;
         // round of filtering
         load5dot();
+
+        // Add notification sound
+        playNotificationSound();
         return;
       }
     }
   }
+
   var best = getTopNClaims(1);
   if (best.length != 0) {
     best = best[0];
@@ -109,6 +113,12 @@ function load5dot() {
   let html = document.createElement("script");
   html.src = claimsURL;
   document.body.append(html);
+}
+
+//Notification sound
+function playNotificationSound() {
+  var audio = new Audio('notification.mp3');
+  audio.play();
 }
 
 //-- Coinbase functions
