@@ -365,7 +365,6 @@ body {
     margin: 0; /* Reset margin */
     flex-grow: 1; /* Allow the paragraph to fill the remaining space */
     overflow-y: auto; /* Enable scrolling for overflow content */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Ensure that the flex items do not grow beyond their containers */
@@ -630,7 +629,7 @@ body {
 .claim-guide-text::before {
     content: '•'; /* Dot symbol */
     font-size: 2em; /* Size of the dot */
-    color: var(--primary-background); /* Color of the dot */
+    color: white; /* Color of the dot */
     position: absolute; /* Position the dot absolutely relative to its parent */
     margin-right: 15px; /* Space between the dot and the text */
     top: 0;
@@ -866,6 +865,18 @@ body {
 
 .footer-content a:hover {
     color: #d80073;
+}
+
+/* Media query for screens wider than 1024px */
+@media (min-width: 1024px) {
+    .pink-pill-image {
+        max-width: 70%; /* Reduces the max width of the image for larger screens */
+        /* You can also add other styling changes here if needed */
+    }
+
+    .pink-pill-content{
+        font-size: 32px;
+    }
 }
 
 @media screen and (min-width: 960px) {
@@ -1130,6 +1141,10 @@ body {
 
     .claim-guide-container{
         font-size:2vw;
+    }
+
+    .claim-guide-text{
+        padding-left: 20px;
     }
 
     .pink-pill-image {
