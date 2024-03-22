@@ -50,7 +50,7 @@ The Natasha story on the front page could be replaced with Max Supply, Circulati
 --FAQ, Roadmap, Etc.
 
 It'd be nice if the site stayed simple and most things were outside the landing page, such as how documentation can be found elsewhere on 21teeth and other places, but things like FAQs and Roadmaps could
-be added. If the site was to be extended, it may be good to remove the front page titles (quantum resistance, privacy, etc) and replace that section with links or pushdowns to relavant parts of the page for extra info.
+be added. If the site was to be extended, it may be good to remove the front page titles (quantum resistance, privacy, etc) and replace that section with links or pushdowns to relevant parts of the page for extra info.
 
 --Styling
 
